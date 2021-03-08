@@ -9,6 +9,6 @@
   "author": "Takagi Kensuke <janus.wel.3@gmail.com>",
   "license": "PUBLIC DOMAIN",
   "dependencies": {
-    "zenn-cli": "^0.1.72"
+    "zenn-cli": "^0.1.75"
   }
 }
