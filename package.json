@@ -1,7 +1,7 @@
 {
-  "name": "zenn-template",
+  "name": "zenn-contents",
   "version": "1.0.0",
-  "description": "A template for Zenn <-> GitHub conneciton",
+  "description": "Zenn contents with GitHub",
   "keywords": [
     "zenn",
     "template"
@@ -9,6 +9,6 @@
   "author": "Takagi Kensuke <janus.wel.3@gmail.com>",
   "license": "PUBLIC DOMAIN",
   "dependencies": {
-    "zenn-cli": "^0.1.75"
+    "zenn-cli": "0.1.82"
   }
 }
