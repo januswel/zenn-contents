@@ -5,7 +5,10 @@
     },
     "preset-japanese": true,
     "preset-ja-technical-writing": {
-      "no-exclamation-question-mark": false
+      "no-exclamation-question-mark": false,
+      "ja-no-mixed-period": {
+        "allowPeriodMarks": [":::"]
+      }
     },
     "preset-ja-spacing": {
       "ja-space-around-code": {
