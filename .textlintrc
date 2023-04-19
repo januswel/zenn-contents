@@ -19,5 +19,12 @@
         "space": "always"
       }
     }
+  },
+  "filters": {
+    "allowlist": {
+      "allow": [
+        "/^:::details .+$/"
+      ]
+    }
   }
 }
