@@ -2,7 +2,7 @@
 title: "React / React Nativeの概要とその背景"
 ---
 
-## Reactとは
+## React とは
 
 React は JavaScript を用いてビュー層を記述するための OSS ライブラリーです。Facebook が主体となって開発されています。
 
@@ -19,7 +19,7 @@ React はどのようなものか、公式ページ[^2]の言葉を借りると�
 [^1]: http://www.npmtrends.com/@angular/core-vs-angular-vs-react-vs-vue
 [^2]: https://reactjs.org/
 
-### 特徴1. Declarative
+### 特徴 1. Declarative
 
 Declarative とは「宣言的」という意味です。次のように、表示すべき情報を書き下していくことでビュー層を構築できます。なお例としてコードを出していますが、細かい点については後の章でくわしく説明するので、本章では雰囲気を感じてください。
 
@@ -27,7 +27,7 @@ Declarative とは「宣言的」という意味です。次のように、表�
 function Profile(props) {
   return (
     // ①
-    <div style={{backgroundColor: props.isRegular ? 'red': 'white'}}>
+    <div style={{ backgroundColor: props.isRegular ? "red" : "white" }}>
       <span>{props.name}</span>
       <img src={props.photo} />
     </div>
@@ -36,20 +36,20 @@ function Profile(props) {
 }
 ```
 
-①の HTML に似た部分は JSX と呼ばれ、ビュー層を書きやすくするために Facebook が JavaScript の構文を拡張したものです。
+① の HTML に似た部分は JSX と呼ばれ、ビュー層を書きやすくするために Facebook が JavaScript の構文を拡張したものです。
 
 これに対し、既存のライブラリーの一部もしくはライブラリーなしの JavaScript では手続きとして、次のようにビュー層を記述する必要があります。
 
 ```javascript
 function renderProfile(props) {
-  var span = document.createElement('span');
+  var span = document.createElement("span");
   span.appendChild(document.createTextNode(props.name));
 
-  var div = document.createElement('div');
-  div.style.backgroundColor = props.isRegular ? 'red' : 'white';
+  var div = document.createElement("div");
+  div.style.backgroundColor = props.isRegular ? "red" : "white";
   div.appendChild(span);
 
-  var img = document.createElement('img');
+  var img = document.createElement("img");
   img.src = props.photo;
   div.appendChild(img);
 
@@ -61,8 +61,7 @@ function renderProfile(props) {
 
 対して宣言的なコードでは一目見れば構造がわかるようになっており、要素の追加/変更/削除が直感的にできることが特徴です。
 
-
-### 特徴2. Component-Based
+### 特徴 2. Component-Based
 
 Component（コンポーネント）は「部品」という意味です。Component-Based（コンポーネントベース）は「部品を基礎とした」という意味合いになります。画面を構成する要素をコンポーネントとして分割/作成し、それらを組み合わせて画面を作成していくという手法です。
 
@@ -76,7 +75,7 @@ Component（コンポーネント）は「部品」という意味です。Compo
 
 `div` や `span` 、 `a` などの HTML 要素は、アプリに必要な構造を書き表すための十分な表現力を持っています。しかし、すべての画面でこれらのみを組み合わせていくのは、骨が折れる作業です。さながら手頃な大きさの木の板だけで超高層ビルを建築するようなものです。
 
-#### HTMLはアプリの画面作成のための語彙ではない
+#### HTML はアプリの画面作成のための語彙ではない
 
 また、 HTML は文書作成用の言語なのでアプリの画面を作成するための語彙を持っていない、という点もハードルを上げている要因です。次のように `div` 要素や `span` 要素に対して `class` 属性で意味を付与できますが、視認性に優れているとは言えません。
 
@@ -100,7 +99,7 @@ Component（コンポーネント）は「部品」という意味です。Compo
 ```jsx
 function Profile(props) {
   return (
-    <div style={{backgroundColor: props.isRegular ? 'red': 'white'}}>
+    <div style={{ backgroundColor: props.isRegular ? "red" : "white" }}>
       <span>{props.name}</span>
       <img src={props.photo} />
     </div>
@@ -124,17 +123,15 @@ function Profile(props) {
 - アプリにとって意味のある名前を用いることができる
 - 内部状態を気にかける必要がない
 
-
 #### 使い回しが効く
 
 画面要素がコンポーネントとして定義されていると、必要な場所すべてに対してそのコンポーネントを配置することで共通の UI を提供できます。たとえば複数の画面にユーザープロフィールを用意する必要がある場合、前述した Profile コンポーネントを必要な画面に配置するだけで画面が作成できてしまいます。これは開発効率に非常に大きく寄与します。
-
 
 ### Learn Once, Write Anywhere
 
 「一度学べばどのプラットフォームでも書ける」という意味です。 Java では "Write Once, Run Anywhere" という標語を掲げていますが、それをもじったものです。「一度 React を学ぶことで、どのプラットフォームにおいてもアプリ開発ができるようになる」という思想です。
 
-勘違いしやすいのですが、*ワンソースでクロスプラットフォーム対応するためのものではありません*。 Android と iOS では使えるコンポーネントや属性に差があるうえ、各プラットフォーム向けに作り込んでいくとワンソースでは済まなくなります。
+勘違いしやすいのですが、_ワンソースでクロスプラットフォーム対応するためのものではありません_。 Android と iOS では使えるコンポーネントや属性に差があるうえ、各プラットフォーム向けに作り込んでいくとワンソースでは済まなくなります。
 
 しかし、基本的なコンポーネントの挙動は似ていますし、実行時にどのプラットフォーム上で動作しているかを判別して挙動を振り分けることも可能です。この思想はプラットフォームごとの開発を強制するものではありません。
 
@@ -142,24 +139,23 @@ function Profile(props) {
 
 React の開発主体である Facebook では、各プラットフォームごとに最適化された見た目・感触・機能を重視しているようです。ただし、現実はプラットフォームごとに開発で必要とされるスキルセットが異なります。その差を埋めるために React を用いているようです。[^5]次は React によってカバーされているプラットフォームの一覧です。
 
-プラットフォーム  | ライブラリー・フレームワーク
-------------------|-------------------
-Web SPA           | ReactDOM / React Native for Web
-Web server side   | Next.js
-静的サイト        | React Static
-Android           | React Native
-iOS               | React Native
-Windows           | React Native Windows
-macOS             | React Native macOS
-PDF               | react-pdf
-CLI               | ink
+| プラットフォーム | ライブラリー・フレームワーク    |
+| ---------------- | ------------------------------- |
+| Web SPA          | ReactDOM / React Native for Web |
+| Web server side  | Next.js                         |
+| 静的サイト       | React Static                    |
+| Android          | React Native                    |
+| iOS              | React Native                    |
+| Windows          | React Native Windows            |
+| macOS            | React Native macOS              |
+| PDF              | react-pdf                       |
+| CLI              | ink                             |
 
 Linux は対応していないのですが、 ReactDOM で開発したアプリを Electron を使ってパッキングすることにより、単体で動作させることが可能です。
 
 [^5]: https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/
 
-
-## Reactが必要とされた背景
+## React が必要とされた背景
 
 Facebook が React を開発した理由は、公式ブログで次のように説明されています。[^6]
 
@@ -177,11 +173,11 @@ MVC という言葉が使われる場合、おおまかに 2 種類のうちど�
 
 次の要素で構成されており、それぞれの頭文字をとって MVC と呼ばれています。
 
-MVCの構成要素 | 説明
---------------|-------------
-Model         | アプリの本質的なデータ構造と処理を表す層
-View          | Modelをユーザーにわかりやすく表示する層
-Controller    | Viewからの入力を受けModelを生成しViewを表示し直す層
+| MVC の構成要素 | 説明                                                     |
+| -------------- | -------------------------------------------------------- |
+| Model          | アプリの本質的なデータ構造と処理を表す層                 |
+| View           | Model をユーザーにわかりやすく表示する層                 |
+| Controller     | View からの入力を受け Model を生成し View を表示し直す層 |
 
 Model、View、Controller それぞれがどのように関連するかは次の図を見ると一目瞭然でしょう。
 
@@ -201,11 +197,11 @@ MVC モデルの動作は次のステップをたどります。
 
 MVC の各層の責務が React でどのように実現されるかの対応は次のようになります。
 
-MVC の構成要素 | React での実現方法
---------------|---------------------------------
-Model         | props によって外部からコンポーネントに注入される
-View          | コンポーネントそのもの
-Controller    | props によって注入された Model をコンポーネントが操作する、もしくは注入された関数を使い Model を操作する
+| MVC の構成要素 | React での実現方法                                                                                       |
+| -------------- | -------------------------------------------------------------------------------------------------------- |
+| Model          | props によって外部からコンポーネントに注入される                                                         |
+| View           | コンポーネントそのもの                                                                                   |
+| Controller     | props によって注入された Model をコンポーネントが操作する、もしくは注入された関数を使い Model を操作する |
 
 props については後の章で詳しく説明します。ここではコンポーネントに外部から注入されるデータもしくは関数があることを理解できれば問題ありません。
 
@@ -217,9 +213,9 @@ MVC では「画面の状態」を Model に持たせるか、 Controller で管
 
 React ではコンポーネントごとに state と呼ばれる状態を持つことが可能です。ここに画面の状態を持たせることで前述した問題は解決されます。 MVC では曖昧だった責務分担がより明確になったわけです。[^8]
 
-また、 MVC ではすべての画面において Controller が必要な Model を生成し、適切に View に渡してあげる必要がありました。さらにユーザーからの入力など View の状態が変化することに対しても Controller が適切にハンドリングしなければなりませんでした。これは画面構成が複雑になるほど Controller の実装難度が上がる要因となっていました。
+また、 MVC ではすべての画面において Controller が必要な Model を生成し、適切に View へ渡す必要がありました。さらにユーザーからの入力など View の状態が変化することに対しても Controller が適切にハンドリングしなければなりませんでした。これは画面構成が複雑になるほど Controller の実装難度が上がる要因となっていました。
 
-対して React では props によって親コンポーネントから子コンポーネントへ単方向に変更が伝播するという性質を持っているため、状態把握がかんたんになっています。この前提があるおかげで *state と props の中身をどう画面に表示するかという観点のみに注意を払えばよく、 MVC より開発しやすくなっています*。
+対して React では props によって親コンポーネントから子コンポーネントへ単方向に変更が伝播するという性質を持っているため、状態把握がかんたんになっています。この前提があるおかげで _state と props の中身をどう画面に表示するかという観点のみに注意を払えばよく、 MVC より開発しやすくなっています_。
 
 [^7]: https://twitter.com/dan_abramov/status/741462507861233665
 [^8]: https://medium.freecodecamp.org/is-mvc-dead-for-the-frontend-35b4d1fe39ec 。主張はほぼ同じだが、元記事では Flux が Model 部分の責務を負うとしていたのに対し、必須ではないと考えた。また、 Business Logic が Controller の責務となっている点は元記事のおかしい点なので整理して記述している。
@@ -256,30 +252,30 @@ React ではコンポーネントごとに state と呼ばれる状態を持つ�
 // javascript
 var searchResults = [
   {
-    name: 'Alex',
-    summary: 'fontend engineer',
+    name: "Alex",
+    summary: "fontend engineer",
     // ②
   },
   {
-    name: 'Barbara',
-    summary: 'backend engineer',
+    name: "Barbara",
+    summary: "backend engineer",
   },
 ];
 
 // ⑤
-var rowTemplate = document.querySelector('#search-result-row-template');
-var tbody = document.querySelector('tbody');
-searchResults.forEach(searchResult => {
+var rowTemplate = document.querySelector("#search-result-row-template");
+var tbody = document.querySelector("tbody");
+searchResults.forEach((searchResult) => {
   var row = document.importNode(rowTemplate.content, true);
 
-  var tds = row.querySelectorAll('td');
+  var tds = row.querySelectorAll("td");
   tds[0].textContent = searchResult.name;
   tds[1].textContent = searchResult.summary;
 
   // ③
 
-  var button = row.querySelector('button');
-  button.addEventListener('click', () => {
+  var button = row.querySelector("button");
+  button.addEventListener("click", () => {
     alert(searchResult.name);
   });
 
@@ -292,14 +288,19 @@ searchResults.forEach(searchResult => {
 この画面を拡張する場合を考えてみましょう。次のようになります。
 
 1. テンプレートへの要素の追加
-  - HTML テンプレートの①付近に要素を追加
-2. 表示する内容の追加
-  - JavaScript コードの②、`searchResults` の定義にデータを追加
-  - JavaScript コードの③でデータを設定するロジックを追加
-3. イベントハンドラーの設定
-  - JavaScript コードの④でインタラクションのためのコードを追加
 
-また、⑤で `querySelector` が実行されるまでエラーとなるかわからないことにも注意しましょう。
+- HTML テンプレートの ① 付近に要素を追加
+
+2. 表示する内容の追加
+
+- JavaScript コードの ②、`searchResults` の定義にデータを追加
+- JavaScript コードの ③ でデータを設定するロジックを追加
+
+3. イベントハンドラーの設定
+
+- JavaScript コードの ④ でインタラクションのためのコードを追加
+
+また、⑤ で `querySelector` が実行されるまでエラーとなるかわからないことにも注意しましょう。
 
 テンプレートではなく React を使うと、次のメリットがあります。
 
@@ -368,8 +369,8 @@ ReactDOM.render(<App searchResults={searchResults} />, document.getElementById('
 
 HTML テンプレートを用いた場合に比べ、機能拡張は次の 2 点で済みます。*`SearchResultRow` の `props` と JSX 部分の把握のみが作業者が必要なことになっているため、負担が減っている*ことがわかります。
 
-1. ①の `searchResults` にデータを追加
-2. ②の `SearchResultRow` に表示、動作を追加
+1. ① の `searchResults` にデータを追加
+2. ② の `SearchResultRow` に表示、動作を追加
 
 また、文字列を指定している箇所がないため、後述する静的解析や型チェックによって実行前にエラーがわかるという利点があります。たとえば `props.content.name` を `props.content.naem` と打ち間違えてしまった際、実行前にツールがエラーを検出してくれます。
 
@@ -378,15 +379,23 @@ HTML テンプレートを用いた場合に比べ、機能拡張は次の 2 点
 ```javascript
 var SearchResultRow = function SearchResultRow(props) {
   return React.createElement(
-    'tr',
+    "tr",
     null,
-    React.createElement('td', null, props.content.name),
-    React.createElement('td', null, props.content.summary),
-    React.createElement('td', null, React.createElement('button', {
-      onClick: function onClick() {
-        return alert(props.content.name);
-      }
-    }, 'detail'))
+    React.createElement("td", null, props.content.name),
+    React.createElement("td", null, props.content.summary),
+    React.createElement(
+      "td",
+      null,
+      React.createElement(
+        "button",
+        {
+          onClick: function onClick() {
+            return alert(props.content.name);
+          },
+        },
+        "detail"
+      )
+    )
   );
 };
 ```
@@ -401,14 +410,14 @@ var SearchResultRow = function SearchResultRow(props) {
 
 ```javascript
 function init(props) {
-  var count = document.createElement('span');
+  var count = document.createElement("span");
   count.innerText = props.count.toString(10);
-  count.id = 'count';
-  document.getElementById('root').appendChild(count);
+  count.id = "count";
+  document.getElementById("root").appendChild(count);
 }
 
 function update(props) {
-  var countDom = document.getElementById('count');
+  var countDom = document.getElementById("count");
   countDom.innerText = props.count.toString(10);
 }
 
@@ -417,9 +426,9 @@ var proxyHandlers = {
     target[key] = newValue;
     update(target);
   },
-}
+};
 
-var target = {count: 0};
+var target = { count: 0 };
 var p = new Proxy(target, proxyHandlers);
 init(target);
 
@@ -493,17 +502,17 @@ p.count += 100;
 ```javascript
 function Profile(props) {
   return {
-    name: 'div',
+    name: "div",
     attributes: {
-      style: { backgroundColor: props.isRegular ? 'red' : 'white' }
+      style: { backgroundColor: props.isRegular ? "red" : "white" },
     },
     children: [
       {
-        name: 'span',
-        children: [ props.name ],
+        name: "span",
+        children: [props.name],
       },
       {
-        name: 'img',
+        name: "img",
         attributes: {
           src: props.photo,
         },
@@ -520,7 +529,7 @@ function Profile(props) {
 ```jsx
 function Profile(props) {
   return (
-    <div style={{backgroundColor: props.isRegular ? 'red': 'white'}}>
+    <div style={{ backgroundColor: props.isRegular ? "red" : "white" }}>
       <span>{props.name}</span>
       <img src={props.photo} />
     </div>
@@ -535,18 +544,12 @@ var Profile = function Profile(props) {
   return React.createElement(
     "div",
     {
-      style: { backgroundColor: props.isRegular ? 'red' : 'white' },
+      style: { backgroundColor: props.isRegular ? "red" : "white" },
     },
-    React.createElement(
-      "span",
-      null,
-      props.name
-    ),
-    React.createElement(
-      "img", {
-        src: props.photo
-      }
-    )
+    React.createElement("span", null, props.name),
+    React.createElement("img", {
+      src: props.photo,
+    })
   );
 };
 ```
@@ -564,10 +567,11 @@ var Profile = function Profile(props) {
 
 [^C1]: https://reactjs.org/docs/faq-internals.html
 [^C2]: https://reactjs.org/docs/reconciliation.html
-[^C3]: https://speakerdeck.com/koba04/ready-for-async-rendering
-:::
+[^C3]:
+    https://speakerdeck.com/koba04/ready-for-async-rendering
+    :::
 
-## React Nativeが必要とされた背景
+## React Native が必要とされた背景
 
 React Native は、 React を用いて Android と iOS のアプリ開発が可能なフレームワークです。前述した React の利点を享受できます。また、モバイルアプリの開発においても発達した JavaScript エコシステムの恩恵を受けられることがメリットです。
 
