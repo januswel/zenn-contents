@@ -1,5 +1,5 @@
 ---
-title: "TypeScript と ECMAScript 2015 の基本を抑える"
+title: "第 2 章: TypeScript と ECMAScript 2015 の基本を抑える"
 ---
 
 ## TypeScript とは

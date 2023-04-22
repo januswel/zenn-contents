@@ -1,5 +1,5 @@
 ---
-title: "React / React Nativeの概要とその背景"
+title: "第 1 章: React / React Nativeの概要とその背景"
 ---
 
 ## React とは
