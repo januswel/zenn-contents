@@ -6,18 +6,15 @@ title: "React / React Nativeの概要とその背景"
 
 React は JavaScript を用いてビュー層を記述するための OSS ライブラリーです。Facebook が主体となって開発されています。
 
-2020 年 3 月現在、JavaScript でビュー層を構築する際に世界で最も使われているパッケージです。すべてのパッケージの日ごとのダウンロード数がわかる「npm trends」というサイト[^1]では、その他のフレームワークの 3 倍以上のシェアを持っていることが確認できます。
+2020 年 3 月現在、JavaScript でビュー層を構築する際に世界で最も使われているパッケージです。すべてのパッケージの日ごとのダウンロード数がわかる[npm trends](http://www.npmtrends.com/angular-vs-react-vs-vue)では、その他のフレームワークの 3 倍以上のシェアを持っていることが確認できます。
 
-React はどのようなものか、公式ページ[^2]の言葉を借りると次の特徴を持っています。
+React はどのようなものか、[公式ページ](https://reactjs.org/)の言葉を借りると次の特徴を持っています。
 
 - Declarative（宣言的）
 - Component-Based（コンポーネントベース）
 - Learn Once, Write Anywhere（一度学べば、どのプラットフォームでも書ける）
 
 これらの特徴をひとつひとつ見ていきましょう。
-
-[^1]: http://www.npmtrends.com/@angular/core-vs-angular-vs-react-vs-vue
-[^2]: https://reactjs.org/
 
 ### 特徴 1. Declarative
 
@@ -137,7 +134,7 @@ function Profile(props) {
 
 もちろん、各プラットフォームに対してユーザー調査を繰り返した結果、全く別の UX とすべきという結論が出ることもあるでしょう。そのような場合に既存の開発チームのみで対応可能という点こそが React Native のメリットです。
 
-React の開発主体である Facebook では、各プラットフォームごとに最適化された見た目・感触・機能を重視しているようです。ただし、現実はプラットフォームごとに開発で必要とされるスキルセットが異なります。その差を埋めるために React を用いているようです。[^5]次は React によってカバーされているプラットフォームの一覧です。
+React の開発主体である Facebook では、各プラットフォームごとに最適化された見た目・感触・機能を重視しているようです。ただし、現実はプラットフォームごとに開発で必要とされるスキルセットが異なります。[その差を埋めるために React を用いているようです](https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/)。次は React によってカバーされているプラットフォームの一覧です。
 
 | プラットフォーム | ライブラリー・フレームワーク    |
 | ---------------- | ------------------------------- |
@@ -153,23 +150,19 @@ React の開発主体である Facebook では、各プラットフォームご�
 
 Linux は対応していないのですが、 ReactDOM で開発したアプリを Electron を使ってパッキングすることにより、単体で動作させることが可能です。
 
-[^5]: https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/
-
 ## React が必要とされた背景
 
-Facebook が React を開発した理由は、公式ブログで次のように説明されています。[^6]
+[公式ブログ](https://reactjs.org/blog/2013/06/05/why-react.html)において、Facebook は React を開発した理由を次のように説明しています。
 
 - React isn't an MVC framework
 - React doesn't use templates
 - Reactive updates are dead simple
 
-[^6]: https://reactjs.org/blog/2013/06/05/why-react.html
-
 ### React isn't an MVC framework
 
 MVC とは設計パターンのひとつです。
 
-MVC という言葉が使われる場合、おおまかに 2 種類のうちどちらかの意味合いで使われます。 1979 年に発表されたオリジナルの MVC と、 Web サービス用に変更された JSP model 2 architecture です。ここでは MVC という言葉を JSP model 2 architecture を指すものとして扱います。[^14]
+MVC という言葉が使われる場合、おおまかに 2 種類のうちどちらかの意味合いで使われます。 1979 年に発表されたオリジナルの MVC と、 [Web サービス用に変更された JSP model 2 architecture](https://en.wikipedia.org/wiki/JSP_model_2_architecture) です。ここでは MVC という言葉を JSP model 2 architecture を指すものとして扱います。
 
 次の要素で構成されており、それぞれの頭文字をとって MVC と呼ばれています。
 
@@ -193,7 +186,7 @@ MVC モデルの動作は次のステップをたどります。
 
 ブラウザーと Controller は HTTP で繋がれています。そのためリクエストごとに View を生成する必要があることと、 HTTP が状態を持てないことから、このようなアーキテクチャーが考案されました。
 
-当初 React のトップページには、マーケティングの都合から「MVC の V として使われることが多い」という記述がありましたが、 2016 年 6 月にその記述が取り払われました。[^7]このことから、実現するものが同じでも考え方は違うことが伺えます。
+当初 React のトップページには、マーケティングの都合から「MVC の V として使われることが多い」という記述がありましたが、 [2016 年 6 月にその記述が取り払われました](https://twitter.com/dan_abramov/status/741462507861233665)。このことから、実現するものが同じでも考え方は違うことが伺えます。
 
 MVC の各層の責務が React でどのように実現されるかの対応は次のようになります。
 
@@ -211,16 +204,13 @@ props については後の章で詳しく説明します。ここではコン�
 
 MVC では「画面の状態」を Model に持たせるか、 Controller で管理する必要がありました。 Model に持たせるとアプリの本質的な状態以外を Model が抱え込むことになります。対して Controller が管理すると、 Model の操作以外の処理を担当することになります。いずれも Fat Model や Fat Controller と呼ばれ、期待されている以上の責務を負うことになっていました。この状態ではプロジェクトや開発者ごとに画面の状態を扱う場所が変わってしまい、保守性が担保しにくいという欠点がありました。
 
-React ではコンポーネントごとに state と呼ばれる状態を持つことが可能です。ここに画面の状態を持たせることで前述した問題は解決されます。 MVC では曖昧だった責務分担がより明確になったわけです。[^8]
+React ではコンポーネントごとに state と呼ばれる状態を持つことが可能です。ここに画面の状態を持たせることで前述した問題は解決されます。[MVC では曖昧だった責務分担がより明確になったわけです](https://medium.freecodecamp.org/is-mvc-dead-for-the-frontend-35b4d1fe39ec)。[^1]
 
 また、 MVC ではすべての画面において Controller が必要な Model を生成し、適切に View へ渡す必要がありました。さらにユーザーからの入力など View の状態が変化することに対しても Controller が適切にハンドリングしなければなりませんでした。これは画面構成が複雑になるほど Controller の実装難度が上がる要因となっていました。
 
 対して React では props によって親コンポーネントから子コンポーネントへ単方向に変更が伝播するという性質を持っているため、状態把握がかんたんになっています。この前提があるおかげで _state と props の中身をどう画面に表示するかという観点のみに注意を払えばよく、 MVC より開発しやすくなっています_。
 
-[^7]: https://twitter.com/dan_abramov/status/741462507861233665
-[^8]: https://medium.freecodecamp.org/is-mvc-dead-for-the-frontend-35b4d1fe39ec 。主張はほぼ同じだが、元記事では Flux が Model 部分の責務を負うとしていたのに対し、必須ではないと考えた。また、 Business Logic が Controller の責務となっている点は元記事のおかしい点なので整理して記述している。
-[^9]: https://saneyukis.hatenablog.com/entry/2014/09/26/174750
-[^14]: https://en.wikipedia.org/wiki/JSP_model_2_architecture
+[^1]: 主張はほぼ同じだが、元記事では Flux が Model 部分の責務を負うとしていたのに対し、必須ではないと考えた。また、 Business Logic が Controller の責務となっている点は元記事のおかしい点なので整理して記述している。
 
 ### React doesn't use templates
 
@@ -438,7 +428,7 @@ p.count = 42;
 p.count += 100;
 ```
 
-データの変更検出に関して、 JavaScript ではこのように Proxy を利用する他、setter を利用するなどの手法があります。データをラップして変更の検出処理を挟み込もうという思想です。表示については最初の表示を `init` 関数が、データが変更された際の更新を `render` 関数が担当しています。[^10]
+データの変更検出に関して、 JavaScript ではこのように Proxy を利用する他、[setter を利用する](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set)などの手法があります。データをラップして変更の検出処理を挟み込もうという思想です。表示については最初の表示を `init` 関数が、データが変更された際の更新を `render` 関数が担当しています。
 
 さて、この方法は十分に機能しますが、拡張性に乏しいコードです。すべてのデータに Proxy を生成し、データの初期表示と更新の方法を定義していかなければなりません。対象のデータが 10 倍、画面数が 10 倍となった際、メンテナンスできなくなってしまいます。
 
@@ -447,8 +437,6 @@ p.count += 100;
 1. データの変更を検出するしくみが不要
 2. 初期表示と表示の更新という場合分けが不要
 3. 変更のあったものだけ更新するため描画が速い
-
-[^10]: https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set
 
 :::details コラム: 表示速度と仮想 DOM
 変更があったものだけを更新するしくみとは言え、非常に複雑な画面では表示速度が落ちてしまうことが容易に想像できます。 React ではこの問題を回避するため、仮想 DOM というアイデアが使われています。
@@ -563,19 +551,13 @@ var Profile = function Profile(props) {
 
 上述したコードを見ると、 `span` 要素で表示している名前の部分は `props.name` が変更された際にのみ再描画すれば常に適切な表示を保てることがわかります。この仕組みは React によって提供されており、差分レンダリングと呼ばれています。表示の高速化という恩恵が得られる、仮想 DOM の大きな強みです。
 
-仮想 DOM は React に特有のものではありません。しかし React では差分検出アルゴリズムをチューニングしており Reconciliation として説明されています。また、差分レンダリングについても React Fiber として最適化が施されています。[^C1][^C2][^C3]
-
-[^C1]: https://reactjs.org/docs/faq-internals.html
-[^C2]: https://reactjs.org/docs/reconciliation.html
-[^C3]:
-    https://speakerdeck.com/koba04/ready-for-async-rendering
-    :::
+仮想 DOM は React に特有のものではありません。しかし React では[差分検出アルゴリズムをチューニング](https://reactjs.org/docs/faq-internals.html)しており [Reconciliation](https://reactjs.org/docs/reconciliation.html) として説明されています。また、差分レンダリングについても [React Fiber](https://speakerdeck.com/koba04/ready-for-async-rendering) として最適化が施されています。
 
 ## React Native が必要とされた背景
 
 React Native は、 React を用いて Android と iOS のアプリ開発が可能なフレームワークです。前述した React の利点を享受できます。また、モバイルアプリの開発においても発達した JavaScript エコシステムの恩恵を受けられることがメリットです。
 
-多くのアプリが React Native で作成されています。たとえば、 Facebook 公式アプリや Instagram は React Native 製です。日本国内では Togetter や pickss などが React Native で作成されています。[^11]
+多くのアプリが React Native で作成されています。たとえば、 [Facebook 公式アプリや Microsoft Office アプリなどは React Native 製](https://reactnative.dev/showcase)です。日本国内では Togetter や pickss などが React Native で作成されています。
 
 次の理由から React Native は生み出されました。既存の課題解決以上に、アプリ開発に際して多大なメリットがあります。
 
@@ -584,14 +566,11 @@ React Native は、 React を用いて Android と iOS のアプリ開発が可�
 - アプリ開発が必要なプラットフォームに対して React に慣れた開発者であれば開発ができる
 - 従来のアプリ開発に比べて開発効率が高い
 
-これらのメリットをもたらす要素については Facebook のブログ[^12]では、以下のように説明されています。
+これらのメリットをもたらす要素については [Facebook のブログ](https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/)では、以下のように説明されています。
 
 - Native Experience
 - Learn Once, Write Anywhere
 - Keeping Development Velocity
-
-[^11]: https://reactnative.dev/showcase
-[^12]: https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/
 
 ### Native Experience
 
@@ -611,16 +590,13 @@ React Native ではこの課題を解決するためにネイティブ UI をそ
 
 React のプログラミングモデルである Declarative が幸いし、ネイティブ層の状態について考えなくてもビュー構築が可能という利点があります。ネイティブ層をコンポーネントという部品で扱うという思想です。
 
-Facebook はかつて HTML5 へ舵を切った後、またネイティブアプリへ回帰しています。この理由はユーザー体験が貧弱なことと開発ツールが揃っていないことだったようです。 React Native はこの点をクリアするために開発されています。[^13][^14]
-
-[^13]: https://techcrunch.com/2012/09/11/mark-zuckerberg-our-biggest-mistake-with-mobile-was-betting-too-much-on-html5/
-[^14]: https://www.infoq.com/jp/news/2012/09/Facebook-HTML5-Native
+[Facebook はかつて HTML5 へ舵を切った後、またネイティブアプリへ回帰しています](https://techcrunch.com/2012/09/11/mark-zuckerberg-our-biggest-mistake-with-mobile-was-betting-too-much-on-html5/)。この理由は[ユーザー体験が貧弱なことと開発ツールが揃っていないこと](https://www.infoq.com/jp/news/2012/09/Facebook-HTML5-Native)だったようです。 React Native はこの点をクリアするために開発されています。
 
 ### Learn Once, Write Anywhere
 
 前述したとおり、「一度 React の書き方を学ぶと、どのプラットフォームでもアプリ開発ができる」ということです。 React での開発経験をプラットフォームをまたいで持ち越すことが可能です。
 
-現在、デスクトップマシンやラップトップマシンなど他の形態のデバイスを抑え、スマートフォンの使用時間が最も長いという調査結果が出ています。ターゲットにもよりますが、これを踏まえてモバイルアプリを開発すべきという結論に至ることは珍しくないでしょう。[^15]
+[現在、デスクトップマシンやラップトップマシンなど他の形態のデバイスを抑え、スマートフォンの使用時間が最も長いという調査結果が出ています](http://www.soumu.go.jp/johotsusintokei/whitepaper/ja/h29/html/nc111210.html)。ターゲットにもよりますが、これを踏まえてモバイルアプリを開発すべきという結論に至ることは珍しくないでしょう。
 
 ただし、通常 iOS のネイティブアプリを開発する際に使う言語は Swift もしくは Objective-C です。ビュー層では xib や Storyboard 、 SwiftUI などを用いて記述します。 Android のネイティブアプリ開発では Kotlin や Java を言語として用い、 xml ファイルでビュー層を記述します。
 
@@ -629,8 +605,6 @@ Facebook はかつて HTML5 へ舵を切った後、またネイティブアプ�
 さらに、大体の状況において管理用のシステム開発が必要になるでしょう。その場合、開発コストやユースケースを鑑みて Web アプリが選択される傾向にあります。また、ユーザーへ Web アプリ版を提供するという決定がなされることもあるでしょう。習熟すべきことが増えてしまい、開発メンバーの負荷は非常に高くなるか、チームをいくつも維持することになり金銭的なコストが高くなるでしょう。
 
 この課題に対して、 React Native では同じ技術によって全プラットフォーム上で開発可能となるメリットがあります。 JSX を使ってビュー層を書き下していくことにより、どのプラットフォーム上でも React というスキルセットを持ったチームによって開発ができるのです。
-
-[^15]: http://www.soumu.go.jp/johotsusintokei/whitepaper/ja/h29/html/nc111210.html
 
 ### Keeping Development Velocity
 

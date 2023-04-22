@@ -6,20 +6,15 @@ title: "データフローの設計および実装"
 
 極論を言うと、アプリケーションとはユーザーにとって有用なデータを適切なタイミングで引き出し、更新するための一連の枠組みのことです。この章ではアプリケーションの作成にあたって重要となるデータの取扱いを実装していきます。
 
-Redux とはアプリケーションの状態を管理するためのライブラリーです。Facebook の Dan Abramov 氏と Andrew Clark 氏によって開発されました。[^1][^2][^3]
+[Redux](https://redux.js.org/) とはアプリケーションの状態を管理するためのライブラリーです。[Dan Abramov](https://github.com/gaearon) 氏と [Andrew Clark](https://github.com/acdlite) 氏によって開発されました。
 
 データ変更と非同期処理は実践的なアプリケーションを作成する際に必要となりますが、その組み合わせは取り扱いづらく、爆発的に複雑になることがわかっています。Redux はいくつかの制限を導入することで、データ変更と非同期処理に対して「状態の変更を予測可能」とすることを目的としています。
 
-この目的を達成するため、次の特徴を持っています。[^4]
+この目的を達成するため、次の[特徴](https://redux.js.org/introduction/three-principles)を持っています。
 
 - Single source of truth
 - State is read-only
 - Changes are made with pure functions
-
-[^1]: https://redux.js.org/
-[^2]: https://github.com/gaearon
-[^3]: https://github.com/acdlite
-[^4]: https://redux.js.org/introduction/three-principles
 
 ### 特徴 1. Single source of truth
 
@@ -148,7 +143,7 @@ Action をプレインオブジェクトとして表現することの利点は�
 
 #### Flux Standard Action
 
-Redux Action は `type` プロパティを持つプレインオブジェクトであること以外は規定されていません。これでは実装者によって差異が出てしまい、効率的な開発の妨げとなっていました。この課題への対応として、Action の細かいルールを定める方法が挙げられます。Flux Standard Action（FSA）は有名なルールのひとつです。[^7]
+Redux Action は `type` プロパティを持つプレインオブジェクトであること以外は規定されていません。これでは実装者によって差異が出てしまい、効率的な開発の妨げとなっていました。この課題への対応として、Action の細かいルールを定める方法が挙げられます。[Flux Standard Action（FSA）](https://github.com/redux-utilities/flux-standard-action)は有名なルールのひとつです。
 
 FSA は次のルールを持っています。
 
@@ -205,8 +200,6 @@ const action = {
 ```
 
 本書では FSA に則った Redux Action を使用します。
-
-[^7]: https://github.com/redux-utilities/flux-standard-action
 
 ### 特徴 3. Changes are made with pure functions
 
@@ -443,7 +436,7 @@ MobX など類似のデータフロー系ライブラリーでは、Store に相
 :::
 
 :::details コラム: 決定性有限オートマトン ミーリ・マシン
-Redux を端的に言い表すと、「現在の状態と入力を受け取って新しい状態を作り出すもの」となります。これは計算機科学では有限オートマトン、より詳しくいうとミーリ・マシンという数理モデルとして定義されています。[^5]
+Redux を端的に言い表すと、「現在の状態と入力を受け取って新しい状態を作り出すもの」となります。これは計算機科学では有限オートマトン、より詳しくいうと[ミーリ・マシン](https://en.wikipedia.org/wiki/Mealy_machine)という数理モデルとして定義されています。
 
 ミーリ・マシンの構成要素は次表の左の列に挙げている定義がなされています。Redux においてそれらに対応するものを右の列に記載しました。
 
@@ -462,10 +455,7 @@ Redux を端的に言い表すと、「現在の状態と入力を受け取っ�
 - 自動販売機
 - 信号機
 - バーコードスキャナー
-
-[^5]: https://en.wikipedia.org/wiki/Mealy_machine
-
-:::
+  :::
 
 ### どのような場合に Redux を使うのが有効か
 
@@ -863,7 +853,7 @@ Redux 公式のディレクトリー構成をそのまま真似すると多く�
       counter.ts
 ```
 
-ところが Action Type、Action Creator、Reducer は 3 つ揃うことではじめて意味のあるものとなります。これを 1 つのファイルにまとめてしまうことで見通しよく記述できる、Ducks という書き方が提案されています。[^6]
+ところが Action Type、Action Creator、Reducer は 3 つ揃うことではじめて意味のあるものとなります。これを 1 つのファイルにまとめてしまうことで見通しよく記述できる、[Ducks](https://github.com/erikras/ducks-modular-redux) という書き方が提案されています。
 
 Ducks には 4 つのルールがあります。
 
@@ -931,8 +921,6 @@ Action と Reducer が同一ファイルにあるので見通しがよくなっ�
     containers/ # ReactコンポーネントとRedux Storeを接続するファイルを格納する
     modules/    # Ducks moduleファイルを格納する
 ```
-
-[^6]: https://github.com/erikras/ducks-modular-redux
 
 ## Redux における非同期処理
 
@@ -1174,9 +1162,7 @@ const store = createStore(appReducer, applyMiddleware(logger, crashReporter));
 
 #### redux-thunk とは
 
-非同期処理のために関数を Action として渡せるようにする middleware は、redux-thunk というパッケージとして提供されています。thunk とは関数に別の関数を注入することを指すプログラミングテクニックのことです。[^8]毎回自分で middleware を実装するのは大変ですので、redux-thunk を使いましょう。
-
-[^8]: https://github.com/reduxjs/redux-thunk
+非同期処理のために関数を Action として渡せるようにする middleware は、[redux-thunk](https://github.com/reduxjs/redux-thunk) というパッケージとして提供されています。thunk とは関数に別の関数を注入することを指すプログラミングテクニックのことです。毎回自分で middleware を実装するのは大変ですので、redux-thunk を使いましょう。
 
 ##### redux-thunk のセットアップ
 
@@ -1210,7 +1196,7 @@ export default createStore(
 
 関数には Action の `dispatch` を含めた、任意の処理を記述できます。単発の `dispatch` ではなく、一連の流れを踏まえた `dispatch` が可能になったことが最大のメリットです。
 
-また、Redux から React へマッピングされた関数は主にユーザーによって駆動されるか、時間など特定の条件下で駆動されるかの 2 つに大別されます。こういった何らかの主体によって駆動される一連の処理は、一般的にユースケースと呼ばれます。ユースケースというと UML によって規定されている言葉が有名ですが、ここでは単純にシステムとそれ以外の何かとのインタラクションをステップとして記述したもの、という定義とします。[^10]
+また、Redux から React へマッピングされた関数は主にユーザーによって駆動されるか、時間など特定の条件下で駆動されるかの 2 つに大別されます。こういった何らかの主体によって駆動される一連の処理は、一般的に[ユースケース](https://en.wikipedia.org/wiki/Use_case)と呼ばれます。ユースケースというと UML によって規定されている言葉が有名ですが、ここでは単純にシステムとそれ以外の何かとのインタラクションをステップとして記述したもの、という定義とします。
 
 Praiser における「Todo 一覧を取得する」というユースケースの処理は次のようになります。
 
@@ -1227,8 +1213,6 @@ Praiser における「Todo 一覧を取得する」というユースケース�
     modules/    # Ducks moduleファイルを格納する
     usecases/   # ユースケースを格納する
 ```
-
-[^10]: https://en.wikipedia.org/wiki/Use_case
 
 ### Redux における Store 設計
 
@@ -1254,7 +1238,7 @@ Redux Store のデータを使用するのはユースケースと React コン�
 
 アプリケーションを有用なものとするためには、そのアプリケーションが解決しようとしている課題を適切に捉えることが必須です。しかし、これは非常に難しいことです。仮説検証を繰り返し、もっともらしい課題から順に解いて探し当てるステップが必要となります。
 
-仮説検証を繰り返すための手法のひとつとして、問題領域を表現し、深化させていく DDD（Domain Driven Design、ドメイン駆動設計）というアプローチがあります。DDD では対象とする問題領域をドメインと呼び、実行可能なプログラミング言語によって書き表していくことでドメインをモデリングするというアプローチを取ります。[^12]
+仮説検証を繰り返すための手法のひとつとして、問題領域を表現し、深化させていく [DDD（Domain Driven Design、ドメイン駆動設計）](https://domainlanguage.com/ddd/)というアプローチがあります。DDD では対象とする問題領域をドメインと呼び、実行可能なプログラミング言語によって書き表していくことでドメインをモデリングするというアプローチを取ります。
 
 本書では Redux Store の設計に DDD を適用しますが、一点だけ変更を加えます。オブジェクト指向の文脈で語られることが多いのですが、クラスを設計していくアプローチではなく、Redux に適用しやすいようにプレインオブジェクトと純粋関数を用いて設計していくアプローチを取ります。例として次のコードに示す、クラスとオブジェクトおよび関数による表現は全く同じものです。
 
@@ -1319,8 +1303,6 @@ function complete(todo: Model): void {
   todo.isCompleted = true; // エラー！
 }
 ```
-
-[^12]: https://domainlanguage.com/ddd/
 
 #### ドメインモデリング
 
@@ -1668,7 +1650,7 @@ export default (selector: Selector, memoizee: Memoizee): Memoized =>
   };
 ```
 
-直前の呼び出しにおける引数と今回の呼び出しにおける引数が全く同一というチェックは `equals` 関数で実現しています。この中で JavaScript の演算子 `!==` を使用していることがポイントです。これは数値や文字列などプリミティブ値であれば値同士を比較しますが、Object のインスタンスなどにおいてはその参照が異なるかどうかをチェックします。次はこの演算子の動作の一例です。[^11]
+直前の呼び出しにおける引数と今回の呼び出しにおける引数が全く同一というチェックは `equals` 関数で実現しています。この中で JavaScript の[演算子 `!==`](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity) を使用していることがポイントです。これは数値や文字列などプリミティブ値であれば値同士を比較しますが、Object のインスタンスなどにおいてはその参照が異なるかどうかをチェックします。次はこの演算子の動作の一例です。
 
 ```typescript
 1 !== 1;  // false
@@ -1684,8 +1666,6 @@ obj !== obj;  // false: 参照が等しい
 このチェック方法は Redux Store において State が変更されたかどうかをチェックする方法と同一です。Reducer によって State の一部が新しい参照となっている場合、`cacheOnce` 関数は引数の参照が異なっていないかをチェックして再計算の是非を判定します。Redux と親和性が高い仕組みです。
 
 注意点として、この仕組みを適用するために、対象の関数は純粋関数である必要があります。非純粋関数の場合、引数が同じでも同じ値を返すとは限らない可能性があるためです。
-
-[^11]: https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity
 
 #### reselect
 

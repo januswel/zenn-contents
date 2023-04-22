@@ -4,9 +4,7 @@ title: "TypeScript と ECMAScript 2015 の基本を抑える"
 
 ## TypeScript とは
 
-TypeScript とは ECMAScript を元に静的型付けを可能としたことが特徴の、 Microsoft が開発した言語です。 React Native は 2018 年 5 月に TypeScript をサポートしました。[^1]
-
-[^1]: https://reactnative.dev/blog/2018/05/07/using-typescript-with-react-native
+TypeScript とは ECMAScript を元に静的型付けを可能としたことが特徴の、 Microsoft が開発した言語です。 [React Native は 2018 年 5 月に TypeScript をサポートしました](https://reactnative.dev/blog/2018/05/07/using-typescript-with-react-native)。
 
 ### 型があることによる 2 つのメリット
 
@@ -105,9 +103,7 @@ function getAll() {
 
 本書を読むために必要となる TypeScript の構文を紹介します。
 
-それぞれの構文を試すには TypeScript Playground を利用するとよいでしょう。型チェックと JavaScript コードへのコンパイル結果を確認しながら TypeScript コードを書けるツールです。TypeScript の公式サイトで利用できます。[^2]
-
-[^2]: http://www.typescriptlang.org/play/
+それぞれの構文を試すには [TypeScript Playground](http://www.typescriptlang.org/play/) を利用するとよいでしょう。型チェックと JavaScript コードへのコンパイル結果を確認しながら TypeScript コードを書けるツールです。TypeScript の公式サイトで利用できます。
 
 #### 明示的な型付け
 
