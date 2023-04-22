@@ -83,7 +83,7 @@ function getAll(): Array<number> {
 }
 ```
 
-関数名は `getAll` としか書かれておらず処理内容もわからない状態です。引数には何も指定されておらず、戻り値の型として `Array<number>` と書かれています。これは引数に何も受け取らず、数値の配列を返す関数の定義です。これらの情報から次のように使うことが可能だとわかります。
+関数名は `getAll` としか書かれておらず処理内容もわからない状態です。引数には何も指定されておらず、戻り値の型として `Array<number>` と書かれています。これは引数に何も受け取らず、数値の配列を返す関数の定義です。これらの情報から次のように使えることがわかります。
 
 ```typescript
 getAll().map((n) => n.toPrecision(3));
@@ -99,7 +99,7 @@ function getAll() {
 }
 ```
 
-こういった型による情報伝達は開発者同士のコミュニケーションにも役立ちます。たとえば上述した `getAll` 関数を定義する方とそれを使う方が異なる場合、型による情報はどう使われたいかを適切に伝えてくれます。裏を返せば、使う側は関数を適切に呼び出さなければならない責務を持つわけです。これはチーム内など近しい状況を持つ開発者同士についても、OSS のようにまったく異なる状況の開発者同士についても、同様にコミュニケーション可能なドキュメントとして働きます。
+こういった型による情報伝達は開発者同士のコミュニケーションにも役立ちます。たとえば上述した `getAll` 関数を定義する方とそれを使う方が異なる場合、型による情報はどう使われたいかを適切に伝えてくれます。裏を返せば、使う側は関数を適切に呼び出さなければならない責務を持つわけです。これはチーム内など近しい状況を持つ開発者同士についても、OSS のようにまったく異なる状況の開発者同士についても、同様にコミュニケーションのためのドキュメントとして働きます。
 
 ### TypeScript の構文
 
@@ -113,7 +113,7 @@ function getAll() {
 
 TypeScript では開発者が明示的に型付けしていくことが可能です。
 
-変数名に続いてコロン `:` と型を書いていくことで変数の型を指定可能です。
+変数名に続いてコロン `:` と型を書いていくことで変数の型を指定できます。
 
 ```typescript
 let a: number;
@@ -121,7 +121,7 @@ a = 42;
 a = "42"; // エラー！
 ```
 
-変数 `a` は `number` 型だと明示しているコードです。 `number` 型である `42` は代入可能ですが、 `string` 型である `'42'` を代入できません。
+変数 `a` は `number` 型だと明示しているコードです。 `number` 型である `42` は代入できますが、 `string` 型である `'42'` を代入できません。
 
 ```typescript
 function double(n: number): number {
@@ -133,7 +133,7 @@ function errorFunc(n: number): number {
 }
 ```
 
-関数の引数は変数の型付けと同様の方法で型を指定可能です。関数の戻り値の型を明示する場合は、引数を取り囲むカッコの直後にコロン `:` と型を書きましょう。
+関数の引数は変数の型付けと同様の方法で型を指定できます。関数の戻り値の型を明示する場合は、引数を取り囲むカッコの直後にコロン `:` と型を書きましょう。
 
 関数 `double` および関数 `errorFunc` の戻り値を `number` 型としています。関数 `double` ではその宣言どおり `number` 型を返していますが、関数 `errorFunc` では `string` 型を返しているためエラーとなります。
 
@@ -185,7 +185,7 @@ a = true; // エラー！
 
 ##### number
 
-JavaScript が扱える数値を表す型です。10 進数だけでなく 2 進数、8 進数、16 進数を取り扱うことが可能です。 `6.63e-34` など指数表記を用いた小数や、 `NaN` 、 `Infinity` も `number` 型となります。
+JavaScript が扱える数値を表す型です。10 進数だけでなく 2 進数、8 進数、16 進数を取り扱えます。 `6.63e-34` など指数表記を用いた小数や、 `NaN` 、 `Infinity` も `number` 型となります。
 
 ##### string
 
@@ -209,14 +209,14 @@ var a = double("42"); // ①エラーとならない
 
 ##### null と undefined
 
-`null` 型と `undefined` 型はそれぞれ JavaScript における `null` と `undefined` に対応します。TypeScript 標準の動作では、これらの型はすべての型に対して代入可能となっています。
+`null` 型と `undefined` 型はそれぞれ JavaScript における `null` と `undefined` に対応します。TypeScript 標準の動作では、これらの型はすべての型に対して代入できます。
 
 ```typescript
 var a: number = null; // エラーとならない
 var b: number = undefined; // エラーとならない
 ```
 
-しかし、これでは各変数について `null` もしくは `undefined` でないことを確かめてからでないと使えません。そのような冗長なコードを避けるため、オプション `strictNullChecks` をオンにすることでそれぞれの型もしくは `any` を代入可能とできます。
+しかし、これでは各変数について `null` もしくは `undefined` でないことを確かめてからでないと使えません。そのような冗長なコードを避けるため、オプション `strictNullChecks` をオンにすることでそれぞれの型もしくは `any` を代入できます。
 
 ```typescript
 var a: number = null; // エラー！
@@ -252,7 +252,7 @@ var array01: Array<number> = [1, 2, 3];
 var array02: number[] = [1, 2, 3];
 ```
 
-対して Tuple は長さを明示する必要がありますが、要素それぞれに異なる型を指定可能です。
+対して Tuple は長さを明示する必要がありますが、要素それぞれに異なる型を指定できます。
 
 ```typescript
 var tuple: [number, string] = [1, "foo"];
@@ -260,7 +260,7 @@ var tuple: [number, string] = [1, "foo"];
 
 ##### Object
 
-オブジェクトも型として表すことが可能です。
+オブジェクトも型として表すことができます。
 
 ```typescript
 function area(rect: { length: number; width: number }) {
@@ -325,7 +325,7 @@ var options05: NetworkOptions = {
 
 ネットワーク通信の設定用オブジェクトを定義しています。 `timeout` プロパティは通信がタイムアウトするまでの時間を、 `numofRetry` はリトライ回数を指定するためのプロパティという想定です。これらが指定されない場合、それぞれのデフォルト値を用いてネットワーク通信するものとします。
 
-`timeout` プロパティおよび `numofRetry` プロパティそれぞれの末尾に `?` が書かれています。指定が任意であることを指示するための書き方です。 `NetworkOptions` 型を使用する際、 `timeout` プロパティと `numofRetry` プロパティについては任意の指定が可能ですが、型定義に存在しないプロパティの指定はエラーとなります。
+`timeout` プロパティおよび `numofRetry` プロパティそれぞれの末尾に `?` が書かれています。指定が任意であることを指示するための書き方です。 `NetworkOptions` 型を使用する際、 `timeout` プロパティと `numofRetry` プロパティについては任意の指定できますが、型定義に存在しないプロパティの指定はエラーとなります。
 
 関数を引数として取る関数を定義する際は関数の型定義をしたくなるでしょう。
 
@@ -359,9 +359,9 @@ doubleCall(3, concat); // エラー！
 type Id = number;
 ```
 
-このように型に別名をつけることも可能です。ここでは `Id` 型を `number` 型の別名として定義しています。
+このように型に別名をつけられます。ここでは `Id` 型を `number` 型の別名として定義しています。
 
-自分で型を定義することの利点は、概念に名前をつけることが可能なことです。この例では `number` 型に `Id` という名前をつけました。以後、何らかの ID を表すデータは `Id` 型を付与することで人間に理解しやすいコードとなります。
+自分で型を定義することの利点は、概念に名前をつけられることです。この例では `number` 型に `Id` という名前をつけました。以後、何らかの ID を表すデータは `Id` 型を付与することで人間に理解しやすいコードとなります。
 
 ##### リテラル型
 
@@ -453,7 +453,7 @@ doubleCall(2, toString); // エラー！
 
 こういった場合に Generics を使います。関数名の直後において角カッコ `<>` で型パラメーター名をくくり、型指定をすべき箇所に型パラメーター名を指定します。 `SameTypeFunction` 型は何らかの型 `T` を受け取り `T` を返す関数を定義しています。 `doubleCall` 関数の第 2 引数の型として `SameTypeFunction` 型を指定していますが、この型パラメーターも Generics によって指定可能としています。
 
-Generics を用いた型を使用する際は通常、角カッコ `<>` にパラメーターを指定する必要があります。ただし、 `doubleCall` 関数では第 1 引数によって `T` 型が推論可能であるため、型パラメーターの指定無しでの呼び出しも可能です。
+Generics を用いた型を使用する際は通常、角カッコ `<>` にパラメーターを指定する必要があります。ただし、 `doubleCall` 関数では第 1 引数によって `T` 型が推論できるため、型パラメーターの指定無しで呼び出せます。
 
 `number` 型をとり `string` 型を返す `toString` 関数を用いた `doubleCall` 関数の呼び出しはエラーとなることに気をつけてください。 `SameTypeFunction` による制約に違反しているためです。
 
@@ -494,7 +494,7 @@ var evens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(function (_value, index) {
 
 ### Optional Chaining
 
-TypeScript 3.7 から使用可能になりました。
+TypeScript 3.7 から使用できるようになりました。
 
 ```typescript
 interface Options {
@@ -563,7 +563,7 @@ function getName(items: Array<Item>, id: number) {
 
 最初のコードに比べ非常にすっきりと書けるようになります。TypeScript は厳密に null チェックをしてくれるのですが、Assertion Functions 導入以前は `if` 文によるチェックが必要でした。より見通しのよいコードとなるよう、活用しましょう。
 
-より一般化した `assert` 関数は次のように定義可能です。データが特定の条件を満たす必要があることを明示する際に使いましょう。
+より一般化した `assert` 関数は次のように定義できます。データが特定の条件を満たす必要があることを明示する際に使いましょう。
 
 ```typescript
 function assert(condition: any, message?: string): asserts condition {
@@ -580,8 +580,7 @@ function area(length: number, width: number) {
 ```
 
 :::details コラム: 効率的な型付け
-
-関数の戻り値や変数の型は TypeScript による推測に任せ、関数の引数およびどうしても明示的な型付けが必要となる場合にのみ、型を書いていくのがよいでしょう。
+関数の戻り値や変数の型は TypeScript による推測に任せましょう。関数の引数およびどうしても明示的な型付けが必要となる場合にのみ、型を書いていくのがよいでしょう。
 
 関数の戻り値を明示的に型付けしなければならない場合、その関数が複数の責務を持ってしまっている場合が多いです。適切な責務に切り分け、ひと目で処理内容がわかるような大きさの関数とすべきです。
 
@@ -631,7 +630,7 @@ export function calculateArea(rect: Rect) {
 
 この場合、戻り値の型はコードを見ればすぐにわかります。さらにコードを変更する際も 1 つの型だけを意識すればよいので、特に戻り値の型を明示する必要性は薄くなります。
 
-ただし、ライブラリー作成時に関数の戻り値を書いていない場合、そのライブラリーの使用者にも関数の内部処理を読ませるのか？という問題が出てきます。が、これについては TypeScript によるコンパイル時に `declaration` オプションをオンにすることで、動作するコードと型宣言とを分離できますのでそれぞれを提供すればよいでしょう。コンパイルによって型宣言には関数の戻り値が明示されますのでライブラリーの使用者は型宣言のみを見て使い方を学習可能となります。さらに、そのライブラリーは JavaScript からも利用可能となります。
+ただし、ライブラリー作成時に関数の戻り値を書いていない場合、そのライブラリーの使用者にも関数の内部処理を読ませるのか？という問題が出てきます。が、これについては TypeScript によるコンパイル時に `declaration` オプションをオンにすることで、動作するコードと型宣言とを分離できますのでそれぞれを提供すればよいでしょう。コンパイルによって型宣言には関数の戻り値が明示されますのでライブラリーの使用者は型宣言のみを見て使い方を学習可能となります。さらに、そのライブラリーは JavaScript からも利用可能です。
 
 TypeScript コードから、型定義がどのように分離されるのか見てみましょう。tsconfig.json は次とします。
 
@@ -680,7 +679,7 @@ function double(n) {
 exports.double = double;
 ```
 
-これは Node.js でも読み込むことが可能な CommonJS 形式です。JavaScript からも利用可能なライブラリーが作成できました。
+これは Node.js でも読み込める CommonJS 形式です。JavaScript からも利用できるライブラリーが作成できました。
 :::
 
 ## ECMAScript 2015 の新記法
@@ -704,7 +703,7 @@ function myFunc() {
 myFunc();
 ```
 
-① で `var` を使い変数 `foo` を宣言しています。しかしそれ以前の ② で変数 `foo` を使っています。予想に反してこのコードは実行可能です。実行すると次の結果が得られます。
+① で `var` を使い変数 `foo` を宣言しています。しかしそれ以前の ② で変数 `foo` を使っています。予想に反してこのコードは実行できます。実行すると次の結果が得られます。
 
 ```
 undefined
@@ -733,7 +732,7 @@ const a = 42;
 a = 0; // エラー！
 ```
 
-ただし、オブジェクトや配列などを `const` で宣言した場合、代入そのものは禁止されていますがその中身については変更可能です。
+ただし、オブジェクトや配列などを `const` で宣言した場合、代入そのものは禁止されていますがその中身については変更できます。
 
 ```typescript
 const obj = { a: 42 };
@@ -745,7 +744,7 @@ array = ["foo"]; // エラー！
 array.push("foo"); // エラーとならない
 ```
 
-また、中カッコ `{}` によって囲まれた部分をブロックと呼びますが、ブロックごとに同名の変数を宣言可能です。
+また、中カッコ `{}` によって囲まれた部分をブロックと呼びますが、ブロックごとに同名の変数を宣言できます。
 
 ```typescript
 const a = 42;
@@ -782,7 +781,7 @@ function divideName(name: string) {
 divideName("Takagi Kensuke");
 ```
 
-Arrow Functions では同様の関数定義を次のように書くことが可能です。
+Arrow Functions では同様の関数定義を次のように書けます。
 
 ```typescript
 const divideName = (name: string) => {
@@ -848,7 +847,7 @@ const evens02 = [1, 2, 3].filter((n: number) => n % 2 === 0);
 
 #### 関数の型
 
-Arrow Function の書き方は関数の型定義としても使用可能です。
+Arrow Function の書き方は関数の型定義としても使用できます。
 
 ```typescript
 type NumericalMap = (n: number) => number;
@@ -874,7 +873,7 @@ Type Aliasing を用い、引数定義、 `=>` に続いて型を指定するこ
 
 ### Default Parameter Values
 
-関数を呼び出す際の引数にデフォルト値を定義可能となっています。
+関数を呼び出す際の引数にデフォルト値を定義できます。
 
 ```typescript
 function round(src: number, digit: number = 1) {
@@ -932,7 +931,7 @@ const url = "https://" + domain + ":" + portNumber;
 const url = `https://${domain}:${portNumber}`;
 ```
 
-まず `'` や `"` ではなく `` ` `` で文字を囲みます。その中で利用したい変数などは `${` と `}` によって囲むことで展開されます。対象は変数のみではなく、式が利用可能です。
+まず `'` や `"` ではなく `` ` `` で文字を囲みます。その中で利用したい変数などは `${` と `}` によって囲むことで展開されます。対象は変数のみではなく、式が利用できます。
 
 ```typescript
 const url = `https://${domain}:${portNumber}/users/${encodeURIComponent(
@@ -940,7 +939,7 @@ const url = `https://${domain}:${portNumber}/users/${encodeURIComponent(
 )}`;
 ```
 
-変数 `userName` の内容として URL に使用可能な文字以外を含む場合を想定しています。問題なく動作します。
+変数 `userName` の内容として URL に使用できる文字以外を含む場合を想定しています。問題なく動作します。
 
 ### Property Shorthand
 
@@ -1010,7 +1009,7 @@ const rect = {
 };
 ```
 
-プロパティ名の位置に変数名を角カッコ `[]` で囲み記述しています。プロパティ名として使用可能な型はいくつかあるのですが、現状 `string` 型を指定することが最良です。
+プロパティ名の位置に変数名を角カッコ `[]` で囲み記述しています。プロパティ名として使用できる型はいくつかあるのですが、現状 `string` 型を指定することが最良です。
 
 ### Destructuring
 
@@ -1110,7 +1109,7 @@ const newObject = {
 }
 ```
 
-同時に一部のプロパティを変更可能です。
+同時に一部のプロパティを変更できます。
 
 ```typescript
 const rect = {
@@ -1132,7 +1131,7 @@ const newRect = {
 }
 ```
 
-配列についても使用可能です。
+配列についても使用できます。
 
 ```typescript
 const numbers = [1, 2, 3];
@@ -1160,7 +1159,7 @@ console.log(numbers === [...numbers]); // false
 
 ### class キーワード
 
-以前の ECMAScript でもクラスを定義可能でしたが、 `class` キーワードによるクラス定義が可能となったのは ECMAScript 2015 からです。
+以前の ECMAScript でもクラスを定義できましたが、 `class` キーワードによるクラス定義が可能となったのは ECMAScript 2015 からです。
 
 ```typescript
 class Rect {
@@ -1261,7 +1260,7 @@ get("https://example.com/apis/names/1")
 
 同様の処理を `Promise` を用いて書いていますが、 `get` 関数が `Promise` オブジェクトを返すことを仮定しています。
 
-この場合、コールバック関数を `get` 関数へ指定する代わりに、 `get` 関数の実行結果である `Promise` オブジェクトが持つ `then` メソッドで応答が返った際の関数を指定しています。複数の `then` を連ねることで非同期処理を順次実行可能です。また、通信が失敗した場合の処理を `catch` メソッドに指定することでエラー処理しています。失敗とみなされる場合、つまり `throw` していた箇所が `Promise.reject` 関数の結果の `return` に変わっていることにも注意してください。
+この場合、コールバック関数を `get` 関数へ指定する代わりに、 `get` 関数の実行結果である `Promise` オブジェクトが持つ `then` メソッドで応答が返った際の関数を指定しています。複数の `then` を連ねることで非同期処理を順次実行できます。また、通信が失敗した場合の処理を `catch` メソッドに指定することでエラー処理しています。失敗とみなされる場合、つまり `throw` していた箇所が `Promise.reject` 関数の結果の `return` に変わっていることにも注意してください。
 
 React Native ではライブラリーで提供されている関数の返り値として `Promise` 型が定義されていることがあります。それらの関数を使用する際は次の書き方を参考にしましょう。
 
@@ -1278,7 +1277,7 @@ function onRejected(error) {
 
 #### async/await
 
-React Native では ECMAScript 2017 で導入された `async` / `await` も使うことが可能です。次のコードはこれまでと同様の処理を `async` / `await` を用いて書いたものです。
+React Native では ECMAScript 2017 で導入された `async` / `await` も使えます。次のコードはこれまでと同様の処理を `async` / `await` を用いて書いたものです。
 
 ```typescript
 async function getData() {
@@ -1316,7 +1315,7 @@ Promise を用いた場合に比べて同期的な書き方に非常に似てい
 
 `Promise` 型を意識しなくてよいコードとなっています。非同期処理が必要な場合、基本的に `async` / `await` を用いて書いていくとよいでしょう。
 
-Arrow Functions においても `async` / `await` を使用可能です。
+Arrow Functions においても `async` / `await` を使用できます。
 
 ```typescript
 const getData = async () => {
@@ -1341,7 +1340,7 @@ export function area({ radius }: Circle) {
 export default (a: Circle, b: Circle) => a.radius === b.radius;
 ```
 
-モジュールから何かしらのデータを提供する場合、 `export` キーワードを用います。提供可能なものはすべてのデータおよび型定義です。関数はデータに含まれるので `export` 可能です。コードでは変数、型定義、関数を `export` しています。
+モジュールから何かしらのデータを提供する場合、 `export` キーワードを用います。提供できるものはすべてのデータおよび型定義です。関数はデータに含まれるので `export` できます。コードでは変数、型定義、関数を `export` しています。
 
 ```typescript
 // app.ts
@@ -1381,9 +1380,9 @@ import something from "./module";
 something(42);
 ```
 
-`module.ts` では `echo` 関数を default export していますが、 `app.ts` では `something` という名前で `import` し使っています。 `export` 時に名前が付けられている必要がないため、リテラル値や Arrow Functions などを指定可能です。ただし、1 つのファイルにつき 1 つしか default export できません。2 つ以上の指定はどちらを `import` すべきかわからなくなるからです。
+`module.ts` では `echo` 関数を default export していますが、 `app.ts` では `something` という名前で `import` し使っています。 `export` 時に名前が付けられている必要がないため、リテラル値や Arrow Functions などを指定できます。ただし、1 つのファイルにつき 1 つしか default export できません。2 つ以上の指定はどちらを `import` すべきかわからなくなるからです。
 
-対して named export では `export` されている名前を意識する必要がありますが、いくつでも `import` 可能です。
+対して named export では `export` されている名前を意識する必要がありますが、いくつでも `import` できます。
 
 ```typescript
 // module.ts
@@ -1418,7 +1417,7 @@ const bar = "bar";
 export default { foo, bar };
 ```
 
-default export されたものと named export されたものを同時に `import` 可能です。
+default export されたものと named export されたものを同時に `import` できます。
 
 ```typescript
 import foo, { bar, buz } from "./module";
