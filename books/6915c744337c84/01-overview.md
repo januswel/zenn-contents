@@ -174,7 +174,7 @@ MVC という言葉が使われる場合、おおまかに 2 種類のうちど�
 
 Model、View、Controller それぞれがどのように関連するかは次の図を見ると一目瞭然でしょう。
 
-![JSP model 2 architecture](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/JSP_Model_2.svg/440px-JSP_Model_2.svg.png)
+![JSP model 2 architecture](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/JSP_Model_2.svg/440px-JSP_Model_2.svg.png =400x)
 
 MVC モデルの動作は次のステップをたどります。
 

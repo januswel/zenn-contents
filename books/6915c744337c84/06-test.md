@@ -11,7 +11,7 @@ React Native でもテストを書くことが可能です。目的としては�
 
 ソフトウェアのテストと聞くとこの目的を思い浮かべることが多いでしょう。しかし、これを確かめるのは非常に大変です。V モデルという品質担保のモデルでは、ユーザーが抱く課題から要求および仕様へと細部が明確化され、実装へと繋がります。同時に、ユーザーの課題を解決できるかや要求、仕様がそれぞれ想定どおりかを満たすテストが作成されます。
 
-![Vモデル](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Systems_Engineering_Process_II.svg/840px-Systems_Engineering_Process_II.svg.png)
+![V モデル](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Systems_Engineering_Process_II.svg/840px-Systems_Engineering_Process_II.svg.png =400x)
 
 つまり「要求を満たしている」とは要求が明確に定まり、どのような状態であれば要求が満たされているかを記述できるという前提が必要となるのです。5 章で検討したユースケースは要求となりうるでしょう。その他の手法やツールを用いてより詳細に分析をしてもよいでしょう。ただし、アプリの開発後にそれらを満たせているかどうかのチェックを忘れないようにしましょう。
 

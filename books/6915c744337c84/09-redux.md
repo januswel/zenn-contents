@@ -398,18 +398,18 @@ export default combineReducers({
 
 以上が Redux の構成要素です。次の図はアプリがどのように Redux を使用するかを表した図です。
 
-![アプリがどのようにReduxを使用するか](../images/09-redux-overview.jpg)
+![アプリがどのように Redux を使用するか](/images/react-native-book/09/redux-overview.jpg =400x)
 
 :::detals コラム: Flux
 Redux は Flux と呼ばれる設計パターンを参考にして作られています。
 
 Flux はそれ以前の設計パターンの代表であった MVC、つまり JSP model 2 architecture と比べると、データの流れが一方向に限定されていることが特徴です。大規模な MVC アプリケーションでは Controller を介して Model と View が複雑に絡み合うため、データの流れを追いづらく、適切に変更することが難しいという問題がありました。
 
-![MVC complexity](https://res.infoq.com/news/2014/05/facebook-mvc-flux/ja/resources/flux-react-mvc.png)
+![MVC complexity](https://res.infoq.com/news/2014/05/facebook-mvc-flux/ja/resources/flux-react-mvc.png =400x)
 
 この問題に対して Flux ではデータの流れを一方向に限定するという解決策をとっています。これは公式サイトの図を見ると一目瞭然でしょう。
 
-![flux diagram](https://github.com/facebook/flux/raw/master/docs/img/flux-diagram-white-background.png)
+![flux diagram](https://github.com/facebookarchive/flux/blob/main/img/flux-diagram-white-background.png?raw=true =400x)
 
 次の点を除いて Redux と構成は同一です。
 
@@ -779,7 +779,7 @@ import { name as appName } from "./app.json";
 AppRegistry.registerComponent(appName, () => App);
 ```
 
-![カウンターアプリ](../images/09/counter-app.png)
+![カウンターアプリ](/images/react-native-book/09/counter-app.png =400x)
 
 :::details コラム: useSelector、useDispatch と connect の比較
 `useSelector` と `useDispatch` が提供されたのは比較的最近です。以前は `connect` 関数を使用していました。次はカウンターアプリでの `connect` の使用例です。
