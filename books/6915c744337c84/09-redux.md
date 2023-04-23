@@ -1520,7 +1520,7 @@ export function getNumofCompleted(todos: Model) {
 
 Redux の世界と React の世界をつなぐ際、`useSelector` という Redux Store から `props` への写像がありました。ここで計算させてみましょう。
 
-```typescript
+```tsx
 // /src/containers/Component.tsx
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -1532,7 +1532,7 @@ export function ConnectedComponent() {
   const completedTodos = useSelector(Todos.getCompletedTodos)
   const numofCompleted = useSelector(Todos.getNumofCompleted);
 
-  return <Component numofCompleted={numofCompleted}>;
+  return <Component numofCompleted={numofCompleted} />
 }
 ```
 
@@ -1702,7 +1702,7 @@ export const getNumofCompleted = createSelector(
 
 これを `useSelector` で使用します。
 
-```typescript
+```tsx
 // /src/containers/Component.tsx
 import React from "react";
 import { useSelector } from "react-redux";
