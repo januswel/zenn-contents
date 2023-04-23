@@ -136,17 +136,17 @@ function Profile(props) {
 
 React の開発主体である Facebook では、各プラットフォームごとに最適化された見た目・感触・機能を重視しているようです。ただし、現実はプラットフォームごとに開発で必要とされるスキルセットが異なります。[その差を埋めるために React を用いているようです](https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/)。次は React によってカバーされているプラットフォームの一覧です。
 
-| プラットフォーム | ライブラリー・フレームワーク    |
-| ---------------- | ------------------------------- |
-| Web SPA          | ReactDOM / React Native for Web |
-| Web server side  | Next.js                         |
-| 静的サイト       | React Static                    |
-| Android          | React Native                    |
-| iOS              | React Native                    |
-| Windows          | React Native Windows            |
-| macOS            | React Native macOS              |
-| PDF              | react-pdf                       |
-| CLI              | ink                             |
+| プラットフォーム        | ライブラリー・フレームワーク                                                                                                                      |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| Web SPA         | [ReactDOM](https://ja.legacy.reactjs.org/docs/react-dom.html) / [React Native for Web](https://necolas.github.io/react-native-web/) |
+| Web server side | [Next.js](https://nextjs.org/)                                                                                                      |
+| 静的サイト           | [React Static](https://github.com/react-static/react-static)                                                                        |
+| Android         | [React Native](https://reactnative.dev/)                                                                                            |
+| iOS             | [React Native](https://reactnative.dev/)                                                                                            |
+| Windows         | [React Native Windows](https://github.com/microsoft/react-native-windows#getting-started)                                           |
+| macOS           | [React Native macOS](https://github.com/microsoft/react-native-macos)                                                               |
+| PDF             | [react-pdf](https://react-pdf.org/)                                                                                                 |
+| CLI             | [ink](https://github.com/EvanBacon/react-native-ink)                                                                                |
 
 Linux は対応していないのですが、 ReactDOM で開発したアプリを Electron を使ってパッキングすることにより、単体で動作させることが可能です。
 
@@ -166,11 +166,11 @@ MVC という言葉が使われる場合、おおまかに 2 種類のうちど�
 
 次の要素で構成されており、それぞれの頭文字をとって MVC と呼ばれています。
 
-| MVC の構成要素 | 説明                                                     |
-| -------------- | -------------------------------------------------------- |
-| Model          | アプリの本質的なデータ構造と処理を表す層                 |
-| View           | Model をユーザーにわかりやすく表示する層                 |
-| Controller     | View からの入力を受け Model を生成し View を表示し直す層 |
+| MVC の構成要素  | 説明                                    |
+|------------|---------------------------------------|
+| Model      | アプリの本質的なデータ構造と処理を表す層                  |
+| View       | Model をユーザーにわかりやすく表示する層               |
+| Controller | View からの入力を受け Model を生成し View を表示し直す層 |
 
 Model、View、Controller それぞれがどのように関連するかは次の図を見ると一目瞭然でしょう。
 
@@ -190,11 +190,11 @@ MVC モデルの動作は次のステップをたどります。
 
 MVC の各層の責務が React でどのように実現されるかの対応は次のようになります。
 
-| MVC の構成要素 | React での実現方法                                                                                       |
-| -------------- | -------------------------------------------------------------------------------------------------------- |
-| Model          | props によって外部からコンポーネントに注入される                                                         |
-| View           | コンポーネントそのもの                                                                                   |
-| Controller     | props によって注入された Model をコンポーネントが操作する、もしくは注入された関数を使い Model を操作する |
+| MVC の構成要素  | React での実現方法                                                        |
+|------------|---------------------------------------------------------------------|
+| Model      | props によって外部からコンポーネントに注入される                                         |
+| View       | コンポーネントそのもの                                                         |
+| Controller | props によって注入された Model をコンポーネントが操作する、<br/>もしくは注入された関数を使い Model を操作する |
 
 props については後の章で詳しく説明します。ここではコンポーネントに外部から注入されるデータもしくは関数があることを理解できれば問題ありません。
 
@@ -481,7 +481,7 @@ p.count += 100;
         src: 'https://example.com/photos/takagi-kensuke.png'
       },
     },
-  ],
+  ]
 }
 ```
 

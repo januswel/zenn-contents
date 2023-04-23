@@ -796,7 +796,7 @@ divideName("Takagi Kensuke");
 関数の処理内容が `return` 文ひとつで済むような場合、 `return` で返すべき値を `=>` に続けて書くことが可能です。
 
 ```typescript
-functoin double01(n: number) {
+function double01(n: number) {
   return 2 * n;
 }
 

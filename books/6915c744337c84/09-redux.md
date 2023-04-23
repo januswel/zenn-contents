@@ -36,12 +36,12 @@ Redux ではアプリケーションの状態を Object のインスタンスに
     {
       id: '44f815f8-57ca-4e62-a7f2-411c808c14b8',
       title: 'create Reducers',
-      detail: 'See Redux documents'
+      detail: 'See Redux documents',
       createdAt: 1575193390669,
       updatedAt: 1575193390669,
       completedAt: null,
     }
-  ],
+  ]
 }
 ```
 
@@ -461,11 +461,11 @@ Redux を端的に言い表すと、「現在の状態と入力を受け取っ�
 
 Redux の特徴からメリット・デメリットを考えると次のようになるでしょう。
 
-| 特徴                                 | メリット                                           | デメリット                                     |
-| ------------------------------------ | -------------------------------------------------- | ---------------------------------------------- |
-| Single source of truth               | アプリケーション状態のシリアライズが容易           | 状態を分割しなければならない場合に使用できない |
-| State is read-only                   | 状態の把握・予測が容易                             | 特になし                                       |
-| Changes are made with pure functions | アプリケーション状態の設計をコードから理解しやすい | 書き方のルールを学ぶための労力が必要           |
+| 特徴                                   | メリット                      | デメリット                   |
+|--------------------------------------|---------------------------|-------------------------|
+| Single source of truth               | アプリケーション状態のシリアライズが容易      | 状態を分割しなければならない場合に使用できない |
+| State is read-only                   | 状態の把握・予測が容易               | 特になし                    |
+| Changes are made with pure functions | アプリケーション状態の設計をコードから理解しやすい | 書き方のルールを学ぶための労力が必要      |
 
 状態を保存する必要のあるアプリケーションでは Redux が非常に有効です。Store から取り出したプレインオブジェクトをシリアライズし、永続化することで目的がかないます。React Native ではモバイルアプリという性質上、ユーザーごとの設定を持つことも多いため、親和性が高いと言えます。
 
@@ -522,9 +522,9 @@ React コンポーネントは UI 部品であるという性質上、このア�
 
 ルートコンポーネントに状態をもたせた場合、必要なコンポーネントへ必要な状態を渡していくことに関して課題が出てきます。React コンポーネント間でデータを渡す場合、2 つの方法があります。
 
-```typescript
+```tsx
 // ①明示的に渡すもの指定する
-<MyComponent a={this.state.a} b={this.state.b} />
+<MyComponent a={this.state.a} b={this.state.b}/>
 
 // ②すべてを渡す
 <MyComponent {...this.state} />
@@ -683,10 +683,10 @@ Store はアプリにひとつのみで限定したいため、作成したも�
 
 これで Redux 側の準備が整いました。まず Counter コンポーネントを `src/components/Counter.tsx` に定義しましょう。
 
-```typescript
+```tsx
 // /src/components/Counter.tsx
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import {Button, StyleSheet, Text, View} from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -722,13 +722,13 @@ React コンポーネントは Redux の世界のことを全く知らないこ�
 
 では react-redux パッケージを用いて Redux の世界のデータを React 側へ props として渡しましょう。`/src/containers/Counter.tsx` を作成し、編集します。
 
-```typescript
+```tsx
 // /src/containers/Counter.tsx
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
-import { State } from "../reducers/counter";
-import { increment, decrement } from "../actions/counter";
+import {State} from "../reducers/counter";
+import {increment, decrement} from "../actions/counter";
 import Counter from "../components/Counter";
 
 export default function ConnectedCounter() {
@@ -752,17 +752,17 @@ export default function ConnectedCounter() {
 
 `Provider` コンポーネントを使い、アプリ全体に対して Store を流し込めば完了です。ここで使用する `Counter` コンポーネントは `containers` ディレクトリーの下にあるものです。`/App.tsx` を `/src/App.tsx` に移し、編集します。
 
-```typescript
+```tsx
 // /src/App.tsx
 import React from "react";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
 
 import Counter from "./containers/Counter";
 import store from "./store";
 
 export default function App() {
   return (
-    <Provider store={store}>
+          <Provider store={store}>
       <Counter />
     </Provider>
   );
@@ -771,10 +771,10 @@ export default function App() {
 
 `/index.js` を次のように編集します。
 
-```typescript
-import { AppRegistry } from "react-native";
+```tsx
+import {AppRegistry} from "react-native";
 import App from "./src/App";
-import { name as appName } from "./app.json";
+import {name as appName} from "./app.json";
 
 AppRegistry.registerComponent(appName, () => App);
 ```
@@ -978,7 +978,7 @@ export default function reducer(state = createInitialState(), action: Action) {
 
 この関数を使用する際は次のように props にマップします。
 
-```typescript
+```tsx
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -1002,7 +1002,7 @@ export default function ConnectedComponent() {
 
 React コンポーネントからの呼び出しは次となります。
 
-```typescript
+```tsx
 interface Props {
   actions: {
     retrieveUsers: () => void;
@@ -1011,8 +1011,8 @@ interface Props {
 
 export default function App(props: Props) {
   return (
-    <View style={styles.container}>
-      <Button title="get users" onPress={props.actions.retrieveUsers} />
+          <View style={styles.container}>
+            <Button title="get users" onPress={props.actions.retrieveUsers}/>
     </View>
   );
 }
@@ -1078,7 +1078,7 @@ const store = createStore(appReducer, applyMiddleware(functionExecutor));
 
 ```typescript
 async function retrieveUsers() {
-  return function (dispatch: Dispatch) {
+  return async function (dispatch: Dispatch) {
     try {
       const response = await fetch("https://example.com/api/todo/");
       const todos = response.json();
@@ -1190,7 +1190,7 @@ export default createStore(
 
 これでセットアップは完了です。
 
-#### Usecase パターン
+#### Use Case パターン
 
 関数を `dispatch` することが可能となりました。改めてこれがどういう意味を持つか考えてみましょう。
 
@@ -1467,10 +1467,10 @@ Redux の作法に則ってドメイン層のコードを呼び出している�
 
 さて、たとえば Todo アプリにおいていままでに完了したタスクとその総数を表示したい場合はどうすればよいでしょうか？これまでの知識を用いると、React コンポーネントで計算すればよいでしょう。
 
-```typescript
+```tsx
 // /src/components/Component.tsx
 import React from "react";
-import { FlatList, Text } from "react-native";
+import {FlatList, Text} from "react-native";
 
 interface Todo {
   title: string;
@@ -1520,7 +1520,7 @@ export function getNumofCompleted(todos: Model) {
 
 Redux の世界と React の世界をつなぐ際、`useSelector` という Redux Store から `props` への写像がありました。ここで計算させてみましょう。
 
-```typescript
+```tsx
 // /src/containers/Component.tsx
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -1532,16 +1532,16 @@ export function ConnectedComponent() {
   const completedTodos = useSelector(Todos.getCompletedTodos)
   const numofCompleted = useSelector(Todos.getNumofCompleted);
 
-  return <Component numofCompleted={numofCompleted}>;
+  return <Component numofCompleted={numofCompleted} />
 }
 ```
 
 先ほどの React コンポーネントは次のようになります。
 
-```typescript
+```tsx
 // /src/components/Component.tsx
 import React from "react";
-import { FlatList, Text } from "react-native";
+import {FlatList, Text} from "react-native";
 
 interface Todo {
   title: string;
@@ -1574,14 +1574,14 @@ export default function Component(props: Props) {
 
 これを防ぐために、配列やオブジェクトについても計算結果をキャッシュするように変更しましょう。すべての計算結果をキャッシュしていくとメモリーの使用量が多くなってしまい、OS によってアプリをシャットダウンされてしまいます。`useSelector` にならい、直前の計算結果のみをキャッシュしておき次回の呼び出し時の引数が全く同一のものであれば直前の計算結果を返す、という仕組みとします。この仕組みを `cacheOnce` 関数として実装したものを使って書き直すと次のようになるでしょう。
 
-```typescript
+```tsx
 // /src/containers/Component.tsx
 import React from "react";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 import Component from "../components/Component";
 import * as Todos from "../domain/todos";
-import { cacheOnce } from "../lib";
+import {cacheOnce} from "../lib";
 
 export function ConnectedComponent() {
   const getCompletedTodos = cacheOnce(
@@ -1702,7 +1702,7 @@ export const getNumofCompleted = createSelector(
 
 これを `useSelector` で使用します。
 
-```typescript
+```tsx
 // /src/containers/Component.tsx
 import React from "react";
 import { useSelector } from "react-redux";
@@ -1748,7 +1748,7 @@ export default React.createContext<UserSettings>(createInitialContext());
 
 作成したユーザー情報の文脈を、ルートコンポーネントで次のように設定します。
 
-```typescript
+```tsx
 // /src/App.ts
 import React from "react";
 
@@ -1756,7 +1756,7 @@ import Home from "./components/Home";
 import UserSettingsContext, {
   createInitialContext,
 } from "./contexts/user-settings";
-import { loadUserSettings } from "../lib";
+import {loadUserSettings} from "../lib";
 
 export default function App() {
   const [userSettings, setUserSettings] = React.useState(
@@ -1781,10 +1781,10 @@ export default function App() {
 
 各コンポーネントでは `UserSettingsContext` を `import` し、`useContext` で参照可能とするだけです。
 
-```typescript
+```tsx
 // /src/components/Home.tsx
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 
 import UserSettingsContext from "../contexts/user-settings";
 
@@ -1816,12 +1816,12 @@ export default function Home() {
 
 いろいろな概念が出てきたので、最後に `/src` ディレクトリー直下の各ディレクトリーを整理します。
 
-| ディレクトリー | 使用パッケージ | 責務                                       |
-| -------------- | -------------- | ------------------------------------------ |
-| domain         | なし           | 課題を解決するためのモデルを表現する       |
-| modules        | redux          | アプリケーションのデータフローを実現する   |
-| usecases       | redux-thunk    | ユースケースを実現する                     |
-| selectors      | reselect       | 本質的なデータから表示用のデータを生成する |
-| containers     | react-redux    | React の世界と Redux の世界をつなぐ        |
-| contexts       | react          | アプリケーションに文脈を与える             |
-| components     | react          | UI を提供する                              |
+| ディレクトリー    | 使用パッケージ     | 責務                       |
+|------------|-------------|--------------------------|
+| domain     | なし          | 課題を解決するためのモデルを表現する       |
+| modules    | redux       | アプリケーションのデータフローを実現する     |
+| usecases   | redux-thunk | ユースケースを実現する              |
+| selectors  | reselect    | 本質的なデータから表示用のデータを生成する    |
+| containers | react-redux | React の世界と Redux の世界をつなぐ |
+| contexts   | react       | アプリケーションに文脈を与える          |
+| components | react       | UI を提供する                 |
