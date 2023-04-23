@@ -136,17 +136,17 @@ function Profile(props) {
 
 React の開発主体である Facebook では、各プラットフォームごとに最適化された見た目・感触・機能を重視しているようです。ただし、現実はプラットフォームごとに開発で必要とされるスキルセットが異なります。[その差を埋めるために React を用いているようです](https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/)。次は React によってカバーされているプラットフォームの一覧です。
 
-| プラットフォーム | ライブラリー・フレームワーク    |
-| ---------------- | ------------------------------- |
-| Web SPA          | ReactDOM / React Native for Web |
-| Web server side  | Next.js                         |
-| 静的サイト       | React Static                    |
-| Android          | React Native                    |
-| iOS              | React Native                    |
-| Windows          | React Native Windows            |
-| macOS            | React Native macOS              |
-| PDF              | react-pdf                       |
-| CLI              | ink                             |
+| プラットフォーム        | ライブラリー・フレームワーク                                                                                                                      |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| Web SPA         | [ReactDOM](https://ja.legacy.reactjs.org/docs/react-dom.html) / [React Native for Web](https://necolas.github.io/react-native-web/) |
+| Web server side | [Next.js](https://nextjs.org/)                                                                                                      |
+| 静的サイト           | [React Static](https://github.com/react-static/react-static)                                                                        |
+| Android         | [React Native](https://reactnative.dev/)                                                                                            |
+| iOS             | [React Native](https://reactnative.dev/)                                                                                            |
+| Windows         | [React Native Windows](https://github.com/microsoft/react-native-windows#getting-started)                                           |
+| macOS           | [React Native macOS](https://github.com/microsoft/react-native-macos)                                                               |
+| PDF             | [react-pdf](https://react-pdf.org/)                                                                                                 |
+| CLI             | [ink](https://github.com/EvanBacon/react-native-ink)                                                                                |
 
 Linux は対応していないのですが、 ReactDOM で開発したアプリを Electron を使ってパッキングすることにより、単体で動作させることが可能です。
 
