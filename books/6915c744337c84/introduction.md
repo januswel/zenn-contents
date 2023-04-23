@@ -27,7 +27,7 @@ title: "はじめに"
 
 次については習得している前提とします。
 
-- JavaScript(ECMASCript 5)
+- JavaScript(ECMAScript 5)
 - HTML
 - CSS
 - Git
