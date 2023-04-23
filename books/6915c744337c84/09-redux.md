@@ -1190,7 +1190,7 @@ export default createStore(
 
 これでセットアップは完了です。
 
-#### Usecase パターン
+#### Use Case パターン
 
 関数を `dispatch` することが可能となりました。改めてこれがどういう意味を持つか考えてみましょう。
 
