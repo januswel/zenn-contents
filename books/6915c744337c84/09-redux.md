@@ -36,12 +36,12 @@ Redux ではアプリケーションの状態を Object のインスタンスに
     {
       id: '44f815f8-57ca-4e62-a7f2-411c808c14b8',
       title: 'create Reducers',
-      detail: 'See Redux documents'
+      detail: 'See Redux documents',
       createdAt: 1575193390669,
       updatedAt: 1575193390669,
       completedAt: null,
     }
-  ],
+  ]
 }
 ```
 
@@ -1816,12 +1816,12 @@ export default function Home() {
 
 いろいろな概念が出てきたので、最後に `/src` ディレクトリー直下の各ディレクトリーを整理します。
 
-| ディレクトリー | 使用パッケージ | 責務                                       |
-| -------------- | -------------- | ------------------------------------------ |
-| domain         | なし           | 課題を解決するためのモデルを表現する       |
-| modules        | redux          | アプリケーションのデータフローを実現する   |
-| usecases       | redux-thunk    | ユースケースを実現する                     |
-| selectors      | reselect       | 本質的なデータから表示用のデータを生成する |
-| containers     | react-redux    | React の世界と Redux の世界をつなぐ        |
-| contexts       | react          | アプリケーションに文脈を与える             |
-| components     | react          | UI を提供する                              |
+| ディレクトリー    | 使用パッケージ     | 責務                       |
+|------------|-------------|--------------------------|
+| domain     | なし          | 課題を解決するためのモデルを表現する       |
+| modules    | redux       | アプリケーションのデータフローを実現する     |
+| usecases   | redux-thunk | ユースケースを実現する              |
+| selectors  | reselect    | 本質的なデータから表示用のデータを生成する    |
+| containers | react-redux | React の世界と Redux の世界をつなぐ |
+| contexts   | react       | アプリケーションに文脈を与える          |
+| components | react       | UI を提供する                 |
