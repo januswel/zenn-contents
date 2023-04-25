@@ -51,7 +51,6 @@ Android 向けのモバイルアプリ開発であれば Windows および Linux
 
 本書のアプリは App Store および Google Play でリリースされており、実際に使用できます。次の QR コードからインストールし、触ってみてください。
 
-[iOS](https://apps.apple.com/us/app/praizer/id1490984826?ls=1)
 [Android](https://play.google.com/store/apps/details?id=com.januswel.praiser)
 
 サンプルアプリのソースコードを次の GitHub リポジトリーで公開しています。本書を読むことで問題なくアプリ構築が可能ですが、全体像を知りたい場合などに参照してください。
