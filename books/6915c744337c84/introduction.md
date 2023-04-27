@@ -32,12 +32,9 @@ title: "はじめに"
 - CSS
 - Git
 
-ただし、身構える必要はありません。 JavaScript については、 JS Primer というサイト[^1]で学習が可能です。わからない箇所は、該当のキーワードで検索して学習する程度でわかるよう、書き方を工夫しています。
+ただし、身構える必要はありません。 JavaScript については、 [JS Primer](https://jsprimer.net/) というサイトで学習が可能です。わからない箇所は、該当のキーワードで検索して学習する程度でわかるよう、書き方を工夫しています。
 
-HTML と CSS については MDN [^2]で学習してください。こちらも都度参照する形で問題ありません。
-
-[^1]: https://jsprimer.net/
-[^2]: https://developer.mozilla.org/ja/
+HTML と CSS については [MDN](https://developer.mozilla.org/ja/) で学習してください。こちらも都度参照する形で問題ありません。
 
 ### 対象OS
 
@@ -49,14 +46,16 @@ Android 向けのモバイルアプリ開発であれば Windows および Linux
 
 ### サンプルアプリについて
 
-本書のアプリは App Store および Google Play でリリースされており、実際に使用できます。次の QR コードからインストールし、触ってみてください。
+本書のアプリは App Store および Google Play でリリースされており、実際に使用できます[^1]。次の QR コードからインストールし、触ってみてください。
 
-[iOS](https://apps.apple.com/us/app/praizer/id1490984826?ls=1)
-[Android](https://play.google.com/store/apps/details?id=com.januswel.praiser)
+- [iOS](https://apps.apple.com/us/app/praizer/id1490984826?ls=1)
+- [Android](https://play.google.com/store/apps/details?id=com.januswel.praiser)
 
 サンプルアプリのソースコードを次の GitHub リポジトリーで公開しています。本書を読むことで問題なくアプリ構築が可能ですが、全体像を知りたい場合などに参照してください。
 
 https://github.com/react-native-jp/praiser
+
+[^1]: iOS 版は現在、公開停止しています。
 
 ### 各章の構成
 
