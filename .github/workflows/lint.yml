@@ -1,6 +1,6 @@
 name: Lint
 on:
-  - push
+  - pull_request
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -18,10 +18,21 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
       - run: npm ci
+      - name: Lint with textlint and report like GitHub PR check
+        uses: tsuyoshicho/action-textlint@v3
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
+          textlint_flags: "**/*.md"
+      - name: Lint with textlint and report like GitHub check
+        uses: tsuyoshicho/action-textlint@v3
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          textlint_flags: "**/*.md"
       - name: Lint with textlint and report like GitHub PR review
         uses: tsuyoshicho/action-textlint@v3
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          level: warning
           textlint_flags: "**/*.md"
