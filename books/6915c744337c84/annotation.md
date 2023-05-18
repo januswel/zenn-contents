@@ -16,3 +16,5 @@ title: "この本について"
 今回の公開にあたり、ご協力いただいた技術評論社さま、誠にありがとうございます。
 
 共著者である[ユタマこたろう](https://zenn.dev/yutama_kotaro)、[仁田脇理史](https://zenn.dev/nitaking)にも感謝を。
+
+[ユタマこたろうさんが一般公開することになった経緯を書いてくれました](https://zenn.dev/yutama_kotaro/articles/dd30e429693977)。ぜひこちらもご覧ください。
