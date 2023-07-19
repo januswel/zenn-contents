@@ -1,5 +1,5 @@
 ---
-title: "ThoughtWorks Technology Rader とは何か"
+title: "ThoughtWorks Technology Radar とは何か"
 emoji: "📡"
 type: "idea" # tech: 技術記事 / idea: アイデア
 topics: [technologyradar]
