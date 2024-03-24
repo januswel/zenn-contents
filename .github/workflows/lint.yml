@@ -5,19 +5,17 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version-file: .node-version
       - name: Cache Node.js packages
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: node_modules
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
       - name: Lint with textlint and report like GitHub PR check
         uses: tsuyoshicho/action-textlint@v3
         with:
