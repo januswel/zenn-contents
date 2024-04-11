@@ -2,8 +2,9 @@
 title: "React コンポーネントの書き方をチームで統一する"
 emoji: "⚛️"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: [React,TypeScript]
+topics: [React, TypeScript]
 published: true
+publication_name: "beingish"
 ---
 
 次の記事を見てなるほどと思ったものの、コンポーネント集作成の視点で書かれている。我々はアプリを作る機会が多いので、その際はどういう書き方が楽なのか、チームで共有するために類型を洗い出し、比較した。
@@ -34,7 +35,7 @@ function MyComponent(props: React.PropsWithChildren<Props>) {
 次の表は横方向が props の形状、縦方向が型の付け方という条件になっている。
 
 |                       | N: props なし | P: props あり | C: 子要素あり |
-|-----------------------|---------------|---------------|---------------|
+| --------------------- | ------------- | ------------- | ------------- |
 | F: 関数               | FN            | FP            | FC            |
 | V: React.V?FC         | VN            | VP            | VC            |
 | R: React.ReactElement | RN            | RP            | RC            |
@@ -51,7 +52,7 @@ https://ikesyo.hatenablog.com/entry/2020/12/18/141737
 
 ```typescript
 interface Props {
-  title: string
+  title: string;
 }
 ```
 
@@ -108,7 +109,7 @@ const VN: React.VFC = () => {
 ### VP: React.V?FC & props あり
 
 ```typescript
-const VP: React.VFC<Props> = props => {
+const VP: React.VFC<Props> = (props) => {
   if (props.title.length % 2 === 0) {
     return null;
   }
@@ -119,7 +120,7 @@ const VP: React.VFC<Props> = props => {
 ### VP: React.V?FC & 子要素あり
 
 ```typescript
-const VC: React.VFC<React.PropsWithChildren<Props>> = props => {
+const VC: React.VFC<React.PropsWithChildren<Props>> = (props) => {
   if (props.title.length % 2 === 0) {
     return null;
   }
@@ -141,7 +142,7 @@ const RN: () => React.ReactElement | null = () => {
 ### RP: React.ReactElement & props あり
 
 ```typescript
-const RP: (props: Props) => React.ReactElement<Props> | null = props => {
+const RP: (props: Props) => React.ReactElement<Props> | null = (props) => {
   if (props.title.length % 2 === 0) {
     return null;
   }
@@ -152,7 +153,9 @@ const RP: (props: Props) => React.ReactElement<Props> | null = props => {
 ### RC: React.ReactElement & 子要素あり
 
 ```typescript
-const RC: (props: React.PropsWithChildren<Props>) => React.ReactElement<Props> | null = props => {
+const RC: (
+  props: React.PropsWithChildren<Props>
+) => React.ReactElement<Props> | null = (props) => {
   if (props.title.length % 2 === 0) {
     return null;
   }
@@ -175,15 +178,15 @@ function NF(): React.ReactElement | null {
 では返り値の型指定なしで実害は出ないのか？多分出ない。 [`React.Element` 以外の型を持つ値をコンポーネントから返すと、型エラーとなる](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgcilQ3wChTMBXAOw2AmrgFEAKASjgG9S44iZKURgBYATAG5SAX3JIAHpFhwAJkkwpKAGyw06DOAEEwYdlx58kAoXAA8TOAHoAfNKA)ためだ。
 
 ```typescript
-import React from 'react'
+import React from "react";
 
 function E() {
   return 42;
 }
 
 export default function App() {
-  return <E />  // 'E' cannot be used as a JSX component.
-                // Its return type 'number' is not a valid JSX element.(2786)
+  return <E />; // 'E' cannot be used as a JSX component.
+  // Its return type 'number' is not a valid JSX element.(2786)
 }
 ```
 
