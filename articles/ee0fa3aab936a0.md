@@ -2,7 +2,7 @@
 title: "技術選定の勘所"
 emoji: "🥢"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["技術選定", "team"]
+topics: ["技術選定", "technologyselection", "team"]
 published: true
 ---
 
