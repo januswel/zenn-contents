@@ -4,6 +4,7 @@ emoji: "🥢"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["技術選定", "technologyselection", "team"]
 published: true
+publication_name: "beingish"
 ---
 
 聞かれることが多いのでまとめる。プロジェクト開始時〜運用中まで、幅広い期間で使えることを想定している。具体的に A と B どっちがいい？というようなものでなく、より抽象化した項目でまとめている。
