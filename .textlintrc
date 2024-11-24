@@ -11,7 +11,8 @@
           ":::"
         ]
       },
-      "max-kanji-continuous-len": false
+      "max-kanji-continuous-len": false,
+      "ja-no-abusage": false
     },
     "preset-ja-spacing": {
       "ja-space-around-code": {
