@@ -3,7 +3,8 @@ title: "GPG 鍵を別マシンに移植する"
 emoji: "✉️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [git, github, gpg, pgp]
-published: false
+published: true
+publication_name: "beingish"
 ---
 
 次の補足。
