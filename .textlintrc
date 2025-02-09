@@ -1,4 +1,13 @@
 {
+  "filters": {
+    "allowlist": {
+      "allow": [
+        "/^<!-- ignore -->$[^]*^<!-- \\/ignore -->$/m",
+        "/^:::+message .+$/",
+        "/^:::details .+$/"
+      ]
+    }
+  },
   "rules": {
     "@proofdict/proofdict": {
       "dictURL": "https://januswel.github.io/proof-dictionary/"
@@ -22,14 +31,6 @@
       "ja-space-between-half-and-full-width": {
         "space": "always"
       }
-    }
-  },
-  "filters": {
-    "allowlist": {
-      "allow": [
-        "/^:::+message .+$/",
-        "/^:::details .+$/"
-      ]
     }
   }
 }
