@@ -1,0 +1,17 @@
+title: 採用、組織化、教育、評価
+summary: 採用、組織化、教育、評価、そして新たな採用まではすべてつながっています。一連の流れとそれぞれにおけるポイントを解説します。
+topics:
+  - エンジニアリングマネージャー
+  - 採用
+  - 組織化
+  - 教育
+  - 評価
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - 01-introduction
+  - 02-recruitment
+  - 03-organizing
+  - 04-development
+  - 05-evaluation
