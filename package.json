@@ -17,11 +17,11 @@
   },
   "devDependencies": {
     "@proofdict/textlint-rule-proofdict": "3.1.2",
-    "textlint": "14.3.0",
+    "textlint": "14.4.2",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-rule-preset-ja-spacing": "2.4.3",
-    "textlint-rule-preset-ja-technical-writing": "10.0.1",
-    "textlint-rule-preset-japanese": "10.0.3",
+    "textlint-rule-preset-ja-technical-writing": "12.0.2",
+    "textlint-rule-preset-japanese": "10.0.4",
     "zenn-cli": "0.1.158"
   },
   "packageManager": "npm@10.8.3+sha512.d08425c8062f56d43bb8e84315864218af2492eb769e1f1ca40740f44e85bd148969382d651660363942e5909cb7ffcbef7ca0ae963ddc2c57a51243b4da8f56"
